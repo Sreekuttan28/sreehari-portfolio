@@ -184,3 +184,13 @@
     text-align: left;
   }
 }
+
+@media(max-width: 800px) {
+  .hero-meta {
+    position: static !important;
+    display: block !important;
+    margin-bottom: 24px !important;
+    top: auto !important;
+    right: auto !important;
+  }
+}
