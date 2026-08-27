@@ -174,3 +174,13 @@
   .grain,.orb,.typed-text{animation:none}
   .reveal{transition:none}
 }
+
+@media(max-width: 800px) {
+  .hero-meta {
+    position: relative; /* Unpins it from absolute positioning so it flows naturally */
+    top: auto;
+    right: auto;
+    margin-bottom: 20px; /* Adds breathing room above your typing text */
+    text-align: left;
+  }
+}
