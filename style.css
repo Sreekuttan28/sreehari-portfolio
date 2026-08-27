@@ -194,3 +194,17 @@
     right: auto !important;
   }
 }
+
+@media(max-width: 800px) {
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 130px; /* Gives padding below the fixed nav bar */
+  }
+  .hero-meta {
+    position: static !important;
+    margin: 0 0 16px 0 !important;
+    width: 100%;
+    order: -1; /* Forces the date/meta to appear first above everything */
+  }
+}
