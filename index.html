@@ -71,18 +71,17 @@
 <main id="top">
 <section class="hero">
   <div class="hero-grid"></div>
-  <!-- Metadata structured neatly with the date right below -->
   <div class="hero-meta mono">
     <div>PORTFOLIO / 5+ YRS IT EXP</div>
-    <div style="margin-top: 4px; color: var(--accent);" >Today's Date: <span id="currentDate"></span></div>
+    <div style="margin-top: 4px; color: var(--accent);" id="currentDate"></div>
   </div>
   <div class="hero-line"></div>
   <div class="hero-copy reveal">
-   <p class="eyebrow mono" style="margin-top: 16px; display: block; clear: both;">
-  <span class="typing-container">
-    <span class="typed-text" id="typedOutput">ACTING LEAD × BUSINESS ANALYST × AUTOMATION</span>
-  </span>
-</p>
+    <p class="eyebrow mono" style="margin-top: 16px; display: block; clear: both;">
+      <span class="typing-container">
+        <span class="typed-text" id="typedOutput">ACTING LEAD × BUSINESS ANALYST × AUTOMATION</span>
+      </span>
+    </p>
     <h1>Complex business needs,<br><em>translated into results.</em></h1>
     <p class="hero-sub">With 5+ years in IT, I bridge the gap between technical teams and business stakeholders—managing client relationships, owning UAT cycles, and building data automation workflows.</p>
     <div class="hero-actions">
@@ -124,7 +123,7 @@
 <section id="toolkit" class="section toolkit">
   <div class="section-head reveal"><span class="mono">03 / TOOLKIT</span><span class="rule"></span></div>
   <div class="tool-cloud reveal">
-    <span class="primary">Advanced Excel</span><span class="primary">KNIME</span><span class="primary">Power Query</span><span class="primary">Power BI</span><span>Business Analysis</span><span>UAT Testing</span><span>Client Relationship Manager</span><span>E-commerce Attribution</span><span>VBA</span><span>Data Validation</span>
+    <span class="primary">Advanced Excel</span><span class="primary">KNIME</span><span class="primary">Power Query</span><span>Business Analysis</span><span>UAT Testing</span><span>Client Relationship Manager</span><span>E-commerce Attribution</span><span>VBA</span><span>Data Validation</span>
   </div>
   <p class="tool-note mono reveal">RIGHT TOOLS + CLEAR BUSINESS ALIGNMENT = SUCCESS.</p>
 </section>
@@ -153,20 +152,57 @@
   </div>
 </section>
 
-<section id="experiments" class="section experiments">
-  <div class="section-head reveal"><span class="mono">05 / AI × DIGITAL EXPERIMENTS</span><span class="rule"></span></div>
+<!-- NEW SECTION: GIBBON AI APP & ARCHITECTURE -->
+<section id="gibbon" class="section experiments">
+  <div class="section-head reveal"><span class="mono">05 / GIBBON AI APP ARCHITECTURE</span><span class="rule"></span></div>
   <div class="experiment-layout">
     <div class="experiment-copy reveal">
-      <h2>Build.<br>Prompt.<br><em>Evolve.</em></h2>
-      <p>When I'm not managing client relationships or building data pipelines, I explore AI-assisted design, crafting custom digital assets, designing posters, and vibe coding modern web interfaces.</p>
+      <h2>Gibbon.<br>AI Web App<br><em>Architecture.</em></h2>
+      <p>Built from scratch using Python & FastAPI, Gibbon combines LLM orchestration, real-time web retrieval, and Edge-TTS voice output into a lightning-fast interactive interface.</p>
+      
+      <!-- Video Demo Container (Replace src with your video URL or GitHub raw video link) -->
+      <div style="margin-top: 25px; border: 1px solid var(--line); background: var(--panel); border-radius: 4px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+        <div class="terminal-bar mono"><span>gibbon_demo.mp4</span><span>LIVE PREVIEW</span></div>
+        <video controls style="width: 100%; display: block; max-height: 240px; object-fit: cover;" poster="">
+          <source src="YOUR_VIDEO_URL_HERE.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
     </div>
-    <div class="terminal reveal">
-      <div class="terminal-bar mono"><span>vibe_coding.log</span><span>● ● ●</span></div>
-      <div class="terminal-body mono">
-        <p><i>$</i> prompt("design sleek portfolio layout")</p>
-        <p><i>$</i> generate_visual_assets("posters & UI")</p>
-        <p><i>$</i> compile_automation_logic()</p>
-        <p class="active"><i>$</i> <span class="blink">system_operational()</span></p>
+    
+    <div class="terminal reveal" style="font-size: 11.5px;">
+      <div class="terminal-bar mono"><span>architecture_schema.ascii</span><span>● ● ●</span></div>
+      <div class="terminal-body mono" style="line-height: 1.4; overflow-x: auto; color: var(--accent);">
+<pre style="margin: 0; font-family: var(--mono);">
+    ┌──────────────────────┐
+    │        GIBBON        │
+    │    Web Interface     │
+    └──────────┬───────────┘
+               │
+               ▼
+    ┌──────────────────────┐
+    │   FastAPI Backend    │
+    │ Python Application   │
+    └──────────┬───────────┘
+               │
+       ┌───────┼───────┐
+       ▼       ▼       ▼
+┌─────────────┐┌─────────────┐┌─────────────┐
+│ LLM Engine  ││ Web Search  ││    Voice    │
+│ Groq/Gemini ││  Retrieval  ││  Edge-TTS   │
+└──────┬──────┘└──────┬──────┘└─────────────┘
+       │              │
+       └───────┬──────┘
+               ▼
+    ┌──────────────────┐
+    │ Response /       │
+    │ Intelligence     │
+    └──────────────────┘
+
+[PIPELINE FLOW]:
+USER ➔ GIBBON UI ➔ FASTAPI ➔ 
+AI ORCHESTRATION ➔ [LLM / WEB / VOICE] ➔ RESPONSE
+</pre>
       </div>
     </div>
   </div>
@@ -202,8 +238,8 @@
 </main>
 
 <footer class="footer mono">
-  <span>SREEHARI — PORTFOLIO V3.3</span>
-  <span>BUSINESS ANALYST × AUTOMATION × DATA</span>
+  <span>SREEHARI — PORTFOLIO V3.4</span>
+  <span>ACTING LEAD & SME</span>
   <span>© 2026</span>
 </footer>
 
