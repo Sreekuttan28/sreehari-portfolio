@@ -152,36 +152,33 @@
   </div>
 </section>
 
-<!-- ENLARGED GIBBON AI APP & ARCHITECTURE SECTION -->
-<section id="gibbon" class="section experiments">
-  <div class="section-head reveal"><span class="mono">05 / GIBBON AI APP ARCHITECTURE</span><span class="rule"></span></div>
-  
-  <!-- Cinematic 16:9 Video Demo Showcase -->
-  <div class="reveal" style="margin-bottom: 40px; border: 1px solid var(--line); background: var(--panel); border-radius: 6px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.6);">
-    <div class="terminal-bar mono">
-      <span>gibbon_video.mp4 (16:9 HD PREVIEW)</span>
-      <a href="https://gibbon-assistant.onrender.com/" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none; font-weight: bold;">LAUNCH LIVE APP ↗</a>
-    </div>
-    <div style="position: relative; width: 100%; padding-top: 56.25%;"> <!-- 16:9 Aspect Ratio Container -->
-      <video controls autoplay muted loop style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-        <source src="gibbon_video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  </div>
+<!-- APPLE-STYLE BACKGROUND VIDEO & TRANSPARENT GIBBON APP SECTION -->
+<section id="gibbon" class="section experiments" style="position: relative; overflow: hidden; padding: 100px 0;">
+  <!-- Background Video Loop (Apple Style Cinematic Layer) -->
+  <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.25; z-index: 0; pointer-events: none;">
+    <source src="gibbon_video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
-  <div class="experiment-layout">
-    <div class="experiment-copy reveal">
-      <h2>Gibbon.<br>AI Web App<br><em>Architecture.</em></h2>
-      <p>Built from scratch using Python & FastAPI, Gibbon combines LLM orchestration, real-time web retrieval, and Edge-TTS voice output into a lightning-fast interactive AI assistant.</p>
-      <div style="margin-top: 25px;">
-        <a href="https://gibbon-assistant.onrender.com/" target="_blank" rel="noopener" class="btn-primary mono" style="display: inline-block;">TEST LIVE APP ↗</a>
-      </div>
-    </div>
+  <!-- Semi-Transparent Dark Overlay Gradient for Readability -->
+  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(12,16,19,0.85) 0%, rgba(12,16,19,0.95) 100%); z-index: 1; pointer-events: none;"></div>
+
+  <!-- Content Layer on Top -->
+  <div style="position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+    <div class="section-head reveal"><span class="mono">05 / GIBBON AI APP ARCHITECTURE</span><span class="rule"></span></div>
     
-    <div class="terminal reveal" style="font-size: 11.5px;">
-      <div class="terminal-bar mono"><span>architecture_schema.ascii</span><span>● ● ●</span></div>
-      <div class="terminal-body mono" style="line-height: 1.4; overflow-x: auto; color: var(--accent);">
+    <div class="experiment-layout" style="align-items: center;">
+      <div class="experiment-copy reveal">
+        <h2>Gibbon.<br>AI Web App<br><em>Architecture.</em></h2>
+        <p>Built from scratch using Python & FastAPI, Gibbon combines LLM orchestration, real-time web retrieval, and Edge-TTS voice output into a lightning-fast interactive AI assistant.</p>
+        <div style="margin-top: 25px;">
+          <a href="https://gibbon-assistant.onrender.com/" target="_blank" rel="noopener" class="btn-primary mono" style="display: inline-block;">TEST LIVE APP ↗</a>
+        </div>
+      </div>
+      
+      <div class="terminal reveal" style="font-size: 11.5px; background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1);">
+        <div class="terminal-bar mono"><span>architecture_schema.ascii</span><span>● ● ●</span></div>
+        <div class="terminal-body mono" style="line-height: 1.4; overflow-x: auto; color: var(--accent);">
 <pre style="margin: 0; font-family: var(--mono);">
     ┌──────────────────────┐
     │        GIBBON        │
@@ -212,6 +209,7 @@
 USER ➔ GIBBON UI ➔ FASTAPI ➔ 
 AI ORCHESTRATION ➔ [LLM / WEB / VOICE] ➔ RESPONSE
 </pre>
+        </div>
       </div>
     </div>
   </div>
@@ -247,7 +245,7 @@ AI ORCHESTRATION ➔ [LLM / WEB / VOICE] ➔ RESPONSE
 </main>
 
 <footer class="footer mono">
-  <span>SREEHARI — PORTFOLIO V3.5</span>
+  <span>SREEHARI — PORTFOLIO V3.6</span>
   <span>ACTING LEAD & SME</span>
   <span>© 2026</span>
 </footer>
