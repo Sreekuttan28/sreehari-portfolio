@@ -64,7 +64,6 @@
     font-size: 7.5px !important; 
     letter-spacing: -0.5px;
   }
-  /* Fixes Luffy floating companion from overflowing the screen width on mobile */
   .luffy-companion {
     transform: scale(0.75);
     right: 5px !important;
@@ -72,19 +71,46 @@
   }
 }
 
-/* 3D Luffy Idle Breathing & Relaxed Hands-Down Animation */
+/* 3D Human-like Luffy Idle Breathing & Running Animations */
 @keyframes luffyIdle {
-  0%, 100% {
-    transform: translateY(0) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-3px) rotate(1.5deg);
-  }
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-3px) rotate(1.5deg); }
 }
-#luffyArmsGroup {
+
+@keyframes luffyRunAcross {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  25% { transform: translate(-180px, -20px) scale(1.1) rotate(-10deg); }
+  50% { transform: translate(-350px, 10px) scale(1) rotate(5deg); }
+  75% { transform: translate(-150px, -10px) scale(1.05) rotate(-5deg); }
+  100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+}
+
+@keyframes legRunLeft {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-35deg); }
+}
+
+@keyframes legRunRight {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(35deg); }
+}
+
+.luffy-idle {
   animation: luffyIdle 4s ease-in-out infinite;
-  transform-origin: 90px 120px;
-  transition: transform 0.3s ease;
+}
+
+.luffy-running {
+  animation: luffyRunAcross 5s cubic-bezier(0.37, 0, 0.63, 1) forwards;
+}
+
+.luffy-running .leg-left {
+  animation: legRunLeft 0.3s ease-in-out infinite alternate;
+  transform-origin: 78px 175px;
+}
+
+.luffy-running .leg-right {
+  animation: legRunRight 0.3s ease-in-out infinite alternate;
+  transform-origin: 101px 175px;
 }
 </style>
 </head>
@@ -92,8 +118,8 @@
 <div class="grain"></div>
 <div class="cursor"></div>
 
-<!-- Interactive 3D Kid Luffy Floating Companion with Hands-Down Posture, Fingers, Legs & Meat -->
-<div id="luffyCompanion" class="luffy-companion" title="Click me! Pulls hat over eyes!">
+<!-- Interactive 3D Human-like Luffy Floating Companion with Inactivity Run -->
+<div id="luffyCompanion" class="luffy-companion luffy-idle" title="Click me! Pulls hat over eyes!">
   <div class="luffy-bubble mono" id="luffyBubble">Shishishi! 🍖</div>
   <svg class="luffy-svg" viewBox="0 0 180 220" width="140" height="170">
     <defs>
@@ -114,31 +140,34 @@
       </linearGradient>
     </defs>
 
-    <!-- Relaxed Hands-Down & Idle Breathing Group -->
-    <g id="luffyArmsGroup" filter="url(#shadow3d)">
-      <!-- Left Arm & Hand (Resting Downward) -->
-      <path id="luffyArmLeft" d="M 68 125 Q 55 145 52 162 C 51 166 57 168 59 164 C 63 154 70 138 74 130" stroke="#fde047" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" fill="none" />
-      <circle cx="52" cy="165" r="3.5" fill="#fde047" />
+    <!-- Arms Group -->
+    <g id="luffyArmsGroup" filter="url(#shadow3d)" style="transform-origin: 90px 120px; transition: transform 0.3s ease;">
+      <!-- Left Arm & Hand -->
+      <path id="luffyArmLeft" d="M 68 125 Q 52 140 48 158 C 47 162 53 164 56 160 C 60 150 68 136 74 130" stroke="#fde047" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+      <circle cx="48" cy="162" r="3.5" fill="#fde047" />
       
-      <!-- Right Arm & Hand (Resting Downward, swings up with meat on click) -->
-      <path id="luffyArmRight" d="M 112 125 Q 125 145 128 162 C 129 166 123 168 121 164 C 117 154 110 138 106 130" stroke="#fde047" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" fill="none" />
-      <circle cx="128" cy="165" r="3.5" fill="#fde047" />
+      <!-- Right Arm & Hand -->
+      <path id="luffyArmRight" d="M 112 125 Q 128 140 132 158 C 133 162 127 164 124 160 C 120 150 112 136 106 130" stroke="#fde047" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+      <circle cx="132" cy="162" r="3.5" fill="#fde047" />
     </g>
     
     <!-- Meat Graphic (Appears on click) -->
     <g id="luffyMeat" style="opacity: 0; transition: opacity 0.3s ease;" filter="url(#shadow3d)">
-      <ellipse cx="142" cy="108" rx="14" ry="9" fill="#f8fafc" />
-      <path d="M 138 108 L 152 108" stroke="#475569" stroke-width="4" stroke-linecap="round" />
-      <path d="M 130 102 Q 142 90 154 102 Q 154 118 142 118 Q 130 118 130 102 Z" fill="#991b1b" />
+      <ellipse cx="145" cy="105" rx="14" ry="9" fill="#f8fafc" />
+      <path d="M 141 105 L 155 105" stroke="#475569" stroke-width="4" stroke-linecap="round" />
+      <path d="M 133 99 Q 145 87 157 99 Q 157 115 145 115 Q 133 115 133 99 Z" fill="#991b1b" />
     </g>
     
-    <!-- Legs & Shoes (3D Structured) -->
+    <!-- Structured Human-like Legs & Shoes -->
     <g filter="url(#shadow3d)">
-      <rect x="73" y="175" width="11" height="25" rx="5" fill="#fde047" />
-      <ellipse cx="78" cy="203" rx="7" ry="4" fill="#1e293b" />
-      
-      <rect x="96" y="175" width="11" height="25" rx="5" fill="#fde047" />
-      <ellipse cx="101" cy="203" rx="7" ry="4" fill="#1e293b" />
+      <g class="leg-left">
+        <rect x="73" y="175" width="11" height="25" rx="5" fill="#fde047" />
+        <ellipse cx="78" cy="203" rx="7" ry="4" fill="#1e293b" />
+      </g>
+      <g class="leg-right">
+        <rect x="96" y="175" width="11" height="25" rx="5" fill="#fde047" />
+        <ellipse cx="101" cy="203" rx="7" ry="4" fill="#1e293b" />
+      </g>
     </g>
 
     <!-- Blue Denim Shorts -->
@@ -155,13 +184,26 @@
       <circle cx="104" cy="130" r="3" fill="#fde047" />
     </g>
 
-    <!-- Head & Face Group with 3D Shading -->
+    <!-- Human-Like Structured Head & Face Features -->
     <g id="luffyHeadGroup" filter="url(#shadow3d)">
-      <path d="M 58 85 Q 50 65 60 48 Q 72 38 90 40 Q 108 38 120 48 Q 130 65 122 85 Z" fill="#0f172a" />
-      <circle cx="90" cy="82" r="30" fill="url(#skinGrad)" />
+      <!-- Hair & Back Head -->
+      <path d="M 58 85 Q 48 62 62 45 Q 75 35 90 38 Q 105 35 118 45 Q 132 62 122 85 Z" fill="#0f172a" />
+      
+      <!-- Human Face Base with Jaw/Chin definition -->
+      <path d="M 62 75 Q 60 50 90 48 Q 120 50 118 75 C 118 98 105 108 90 108 C 75 108 62 98 62 75 Z" fill="url(#skinGrad)" />
+      
+      <!-- Iconic Face Scar under Left Eye -->
       <line x1="74" y1="88" x2="82" y2="94" stroke="#dc2626" stroke-width="2" stroke-linecap="round" />
-      <path id="luffyMouth" d="M 76 94 Q 90 108 104 94" stroke="#0f172a" stroke-width="3.5" fill="none" stroke-linecap="round" />
+      
+      <!-- Expressive Human Smile -->
+      <path id="luffyMouth" d="M 76 92 Q 90 104 104 92" stroke="#0f172a" stroke-width="3.5" fill="none" stroke-linecap="round" />
+      
+      <!-- Human Anime Eyes with Eyebrows & Lashes -->
       <g id="luffyEyes">
+        <!-- Eyebrows -->
+        <path d="M 72 72 Q 78 68 84 72" stroke="#0f172a" stroke-width="2" fill="none" stroke-linecap="round" />
+        <path d="M 96 72 Q 102 68 108 72" stroke="#0f172a" stroke-width="2" fill="none" stroke-linecap="round" />
+        <!-- Eyes -->
         <circle cx="78" cy="78" r="4.5" fill="#0f172a" />
         <circle cx="102" cy="78" r="4.5" fill="#0f172a" />
         <circle cx="79.5" cy="76.5" r="1.5" fill="#ffffff" />
@@ -364,7 +406,7 @@ AI ORCHESTRATION ➔ [LLM / WEB / VOICE] ➔ RESPONSE
 </main>
 
 <footer class="footer mono">
-  <span>SREEHARI — PORTFOLIO V3.9</span>
+  <span>SREEHARI — PORTFOLIO V4.0</span>
   <span>ACTING LEAD & SME</span>
   <span>© 2026</span>
 </footer>
