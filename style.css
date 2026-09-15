@@ -237,3 +237,23 @@
     line-height: 1.1 !important;
   }
 }
+
+/* Mobile Fix for ASCII Architecture Table and Zoom Overflow */
+@media (max-width: 800px) {
+  .terminal-body pre {
+    white-space: pre-wrap !important; /* Forces long ASCII lines to wrap within the screen */
+    word-break: break-all !important;
+    font-size: 9.5px !important;     /* Scales down text slightly for mobile screens */
+    overflow-x: hidden !important;
+  }
+  .experiment-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+  .terminal {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
