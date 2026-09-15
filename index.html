@@ -10,6 +10,56 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<style>
+/* Emergency Mobile Viewport & ASCII Overflow Protection */
+@media (max-width: 800px) {
+  body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+  }
+  .hero {
+    min-height: auto !important;
+    padding: 110px 16px 40px 16px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  .hero-meta {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    left: auto !important;
+    margin-bottom: 16px !important;
+    order: -2 !important;
+    width: 100% !important;
+    display: block !important;
+  }
+  .hero-copy {
+    order: -1 !important;
+    width: 100% !important;
+  }
+  .hero h1 {
+    font-size: 2.3rem !important;
+    line-height: 1.1 !important;
+  }
+  .experiment-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+  .terminal {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-x: auto !important;
+  }
+  .terminal-body pre {
+    white-space: pre !important;
+    font-size: 8px !important; /* Scales down ASCII architecture perfectly to fit mobile screens */
+    letter-spacing: -0.5px;
+  }
+}
+</style>
 </head>
 <body>
 <div class="grain"></div>
@@ -247,7 +297,7 @@ AI ORCHESTRATION ➔ [LLM / WEB / VOICE] ➔ RESPONSE
 </main>
 
 <footer class="footer mono">
-  <span>SREEHARI — PORTFOLIO V3.7</span>
+  <span>SREEHARI — PORTFOLIO V3.8</span>
   <span>ACTING LEAD & SME</span>
   <span>© 2026</span>
 </footer>
