@@ -71,54 +71,109 @@
     bottom: 20px !important;
   }
 }
+
+/* 3D Luffy Idle Breathing & Relaxed Hands-Down Animation */
+@keyframes luffyIdle {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-3px) rotate(1.5deg);
+  }
+}
+#luffyArmsGroup {
+  animation: luffyIdle 4s ease-in-out infinite;
+  transform-origin: 90px 120px;
+  transition: transform 0.3s ease;
+}
 </style>
 </head>
 <body>
 <div class="grain"></div>
 <div class="cursor"></div>
 
-<!-- Interactive Kid Luffy Floating Companion with Meat & Raising Hand -->
+<!-- Interactive 3D Kid Luffy Floating Companion with Hands-Down Posture, Fingers, Legs & Meat -->
 <div id="luffyCompanion" class="luffy-companion" title="Click me! Pulls hat over eyes!">
   <div class="luffy-bubble mono" id="luffyBubble">Shishishi! 🍖</div>
-  <svg class="luffy-svg" viewBox="0 0 160 200" width="130" height="160">
-    <!-- Gomu Gomu Stretching Arms / Raised Hand Holding Meat -->
-    <g id="luffyArmsGroup">
-      <line id="luffyArmLeft" x1="55" y1="120" x2="20" y2="120" stroke="#fcd34d" stroke-width="10" stroke-linecap="round" />
-      <line id="luffyArmRight" x1="105" y1="120" x2="140" y2="120" stroke="#fcd34d" stroke-width="10" stroke-linecap="round" />
-    </g>
-    
-    <!-- Meat Graphic -->
-    <g id="luffyMeat" style="opacity: 0; transition: opacity 0.3s ease;">
-      <ellipse cx="145" cy="85" rx="12" ry="8" fill="#f8fafc" />
-      <path d="M 143 85 L 155 85" stroke="#475569" stroke-width="4" stroke-linecap="round" />
-      <path d="M 135 80 Q 145 70 155 80 Q 155 95 145 95 Q 135 95 135 80 Z" fill="#991b1b" />
-    </g>
-    
-    <!-- Red Vest / Outfit -->
-    <path d="M 60 115 Q 80 105 100 115 L 108 175 Q 80 185 52 175 Z" fill="#ef4444" />
-    <path d="M 75 115 L 75 170 L 85 170 L 85 115 Z" fill="#fef08a" />
-    <path d="M 60 115 L 70 150 L 50 155 Z" fill="#1e293b" />
-    <path d="M 100 115 L 90 150 L 110 155 Z" fill="#1e293b" />
-    <rect x="62" y="170" width="10" height="15" fill="#fde047" />
-    <rect x="88" y="170" width="10" height="15" fill="#fde047" />
+  <svg class="luffy-svg" viewBox="0 0 180 220" width="140" height="170">
+    <defs>
+      <filter id="shadow3d" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="4" stdDeviation="3" flood-color="#000" flood-opacity="0.4"/>
+      </filter>
+      <linearGradient id="skinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#fef08a" />
+        <stop offset="100%" stop-color="#fde047" />
+      </linearGradient>
+      <linearGradient id="vestGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#f87171" />
+        <stop offset="100%" stop-color="#dc2626" />
+      </linearGradient>
+      <linearGradient id="hatGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#fde047" />
+        <stop offset="100%" stop-color="#d97706" />
+      </linearGradient>
+    </defs>
 
-    <!-- Head & Face Group -->
-    <g id="luffyHeadGroup">
-      <path d="M 52 80 Q 45 65 55 50 Q 65 40 80 42 Q 95 40 105 50 Q 115 65 108 80 Z" fill="#0f172a" />
-      <circle cx="80" cy="80" r="28" fill="#fde047" />
-      <path id="luffyMouth" d="M 68 90 Q 80 102 92 90" stroke="#0f172a" stroke-width="3" fill="none" stroke-linecap="round" />
+    <!-- Relaxed Hands-Down & Idle Breathing Group -->
+    <g id="luffyArmsGroup" filter="url(#shadow3d)">
+      <!-- Left Arm & Hand (Resting Downward) -->
+      <path id="luffyArmLeft" d="M 68 125 Q 55 145 52 162 C 51 166 57 168 59 164 C 63 154 70 138 74 130" stroke="#fde047" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+      <circle cx="52" cy="165" r="3.5" fill="#fde047" />
+      
+      <!-- Right Arm & Hand (Resting Downward, swings up with meat on click) -->
+      <path id="luffyArmRight" d="M 112 125 Q 125 145 128 162 C 129 166 123 168 121 164 C 117 154 110 138 106 130" stroke="#fde047" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+      <circle cx="128" cy="165" r="3.5" fill="#fde047" />
+    </g>
+    
+    <!-- Meat Graphic (Appears on click) -->
+    <g id="luffyMeat" style="opacity: 0; transition: opacity 0.3s ease;" filter="url(#shadow3d)">
+      <ellipse cx="142" cy="108" rx="14" ry="9" fill="#f8fafc" />
+      <path d="M 138 108 L 152 108" stroke="#475569" stroke-width="4" stroke-linecap="round" />
+      <path d="M 130 102 Q 142 90 154 102 Q 154 118 142 118 Q 130 118 130 102 Z" fill="#991b1b" />
+    </g>
+    
+    <!-- Legs & Shoes (3D Structured) -->
+    <g filter="url(#shadow3d)">
+      <rect x="73" y="175" width="11" height="25" rx="5" fill="#fde047" />
+      <ellipse cx="78" cy="203" rx="7" ry="4" fill="#1e293b" />
+      
+      <rect x="96" y="175" width="11" height="25" rx="5" fill="#fde047" />
+      <ellipse cx="101" cy="203" rx="7" ry="4" fill="#1e293b" />
+    </g>
+
+    <!-- Blue Denim Shorts -->
+    <g filter="url(#shadow3d)">
+      <path d="M 70 165 L 110 165 L 108 180 L 93 180 L 90 172 L 87 180 L 72 180 Z" fill="#2563eb" />
+      <rect x="70" y="162" width="40" height="5" rx="2" fill="#ca8a04" />
+    </g>
+
+    <!-- Red Open Vest / Torso -->
+    <g filter="url(#shadow3d)">
+      <path d="M 62 115 Q 90 105 118 115 L 112 168 Q 90 175 68 168 Z" fill="url(#vestGrad)" />
+      <path d="M 80 115 L 90 150 L 100 115 Z" fill="#0f172a" opacity="0.15" />
+      <circle cx="76" cy="130" r="3" fill="#fde047" />
+      <circle cx="104" cy="130" r="3" fill="#fde047" />
+    </g>
+
+    <!-- Head & Face Group with 3D Shading -->
+    <g id="luffyHeadGroup" filter="url(#shadow3d)">
+      <path d="M 58 85 Q 50 65 60 48 Q 72 38 90 40 Q 108 38 120 48 Q 130 65 122 85 Z" fill="#0f172a" />
+      <circle cx="90" cy="82" r="30" fill="url(#skinGrad)" />
+      <line x1="74" y1="88" x2="82" y2="94" stroke="#dc2626" stroke-width="2" stroke-linecap="round" />
+      <path id="luffyMouth" d="M 76 94 Q 90 108 104 94" stroke="#0f172a" stroke-width="3.5" fill="none" stroke-linecap="round" />
       <g id="luffyEyes">
-        <circle cx="70" cy="76" r="4" fill="#0f172a" />
-        <circle cx="90" cy="76" r="4" fill="#0f172a" />
-        <line x1="62" y1="84" x2="68" y2="90" stroke="#dc2626" stroke-width="2" stroke-linecap="round" />
+        <circle cx="78" cy="78" r="4.5" fill="#0f172a" />
+        <circle cx="102" cy="78" r="4.5" fill="#0f172a" />
+        <circle cx="79.5" cy="76.5" r="1.5" fill="#ffffff" />
+        <circle cx="103.5" cy="76.5" r="1.5" fill="#ffffff" />
       </g>
     </g>
 
-    <!-- Straw Hat -->
-    <g id="luffyHat" style="transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275); transform-origin: 80px 55px;">
-      <ellipse cx="80" cy="58" rx="46" ry="12" fill="#fbbf24" stroke="#b45309" stroke-width="2.5" />
-      <path d="M 62 55 Q 80 20 98 55 Z" fill="#f59e0b" stroke="#b45309" stroke-width="2.5" />
-      <rect x="61" y="50" width="38" height="8" fill="#dc2626" rx="2" />
+    <!-- Straw Hat with 3D Depth & Red Ribbon -->
+    <g id="luffyHat" style="transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275); transform-origin: 90px 55px;" filter="url(#shadow3d)">
+      <ellipse cx="90" cy="58" rx="52" ry="13" fill="url(#hatGrad)" stroke="#b45309" stroke-width="2" />
+      <path d="M 68 54 Q 90 12 112 54 Z" fill="url(#hatGrad)" stroke="#b45309" stroke-width="2" />
+      <rect x="67" y="48" width="46" height="8" fill="#dc2626" rx="2" />
     </g>
   </svg>
 </div>
