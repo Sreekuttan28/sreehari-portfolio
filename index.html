@@ -186,24 +186,13 @@
 
     <!-- Human-Like Structured Head & Face Features -->
     <g id="luffyHeadGroup" filter="url(#shadow3d)">
-      <!-- Hair & Back Head -->
       <path d="M 58 85 Q 48 62 62 45 Q 75 35 90 38 Q 105 35 118 45 Q 132 62 122 85 Z" fill="#0f172a" />
-      
-      <!-- Human Face Base with Jaw/Chin definition -->
       <path d="M 62 75 Q 60 50 90 48 Q 120 50 118 75 C 118 98 105 108 90 108 C 75 108 62 98 62 75 Z" fill="url(#skinGrad)" />
-      
-      <!-- Iconic Face Scar under Left Eye -->
       <line x1="74" y1="88" x2="82" y2="94" stroke="#dc2626" stroke-width="2" stroke-linecap="round" />
-      
-      <!-- Expressive Human Smile -->
       <path id="luffyMouth" d="M 76 92 Q 90 104 104 92" stroke="#0f172a" stroke-width="3.5" fill="none" stroke-linecap="round" />
-      
-      <!-- Human Anime Eyes with Eyebrows & Lashes -->
       <g id="luffyEyes">
-        <!-- Eyebrows -->
         <path d="M 72 72 Q 78 68 84 72" stroke="#0f172a" stroke-width="2" fill="none" stroke-linecap="round" />
         <path d="M 96 72 Q 102 68 108 72" stroke="#0f172a" stroke-width="2" fill="none" stroke-linecap="round" />
-        <!-- Eyes -->
         <circle cx="78" cy="78" r="4.5" fill="#0f172a" />
         <circle cx="102" cy="78" r="4.5" fill="#0f172a" />
         <circle cx="79.5" cy="76.5" r="1.5" fill="#ffffff" />
@@ -311,36 +300,70 @@
   </div>
 </section>
 
-<!-- CINEMATIC 16:9 AUTO-PLAYING SHOWCASE & ARCHITECTURE -->
-<section id="gibbon" class="section experiments">
-  <div class="section-head reveal"><span class="mono">05 / GIBBON AI APP ARCHITECTURE</span><span class="rule"></span></div>
+<!-- MOKUTTAN LABS & GIBBON AI APP INCUBATOR SECTION -->
+<section id="mokuttan-labs" class="section experiments" style="border-top: 1px solid var(--line); padding-top: 80px;">
+  <div class="section-head reveal"><span class="mono">05 / MOKUTTAN LABS & EXPERIMENTS</span><span class="rule"></span></div>
   
-  <!-- 16:9 Responsive Auto-playing Loop Video (No Controls / Apple Style Release) -->
-  <div class="reveal" style="margin-bottom: 40px; border: 1px solid var(--line); background: var(--panel); border-radius: 6px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.6);">
-    <div class="terminal-bar mono">
-      <span>gibbon_video.mp4 (16:9 AUTOMATIC SHOWCASE)</span>
-      <a href="https://gibbon-assistant.onrender.com/" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none; font-weight: bold;">LAUNCH LIVE APP ↗</a>
-    </div>
-    <div style="position: relative; width: 100%; padding-top: 56.25%;"> <!-- Perfect 16:9 Aspect Ratio -->
-      <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; filter: contrast(1.15) brightness(1.05); border-radius: 4px;">
-        <source src="gibbon_video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  </div>
-
-  <div class="experiment-layout">
+  <div class="experiment-layout" style="margin-bottom: 50px;">
     <div class="experiment-copy reveal">
-      <h2>Gibbon.<br>AI Web App<br><em>Architecture.</em></h2>
-      <p>Built from scratch using Python & FastAPI, Gibbon combines LLM orchestration, real-time web retrieval, and Edge-TTS voice output into a lightning-fast interactive AI assistant.</p>
+      <h2>Mokuttan Labs.<br>Developer Hub &<br><em>AI Incubator.</em></h2>
+      <p>Mokuttan Labs serves as the personal creative and experimental brand for building custom web applications, automation utilities, and immersive AI interfaces—including the development incubator for the Gibbon Assistant.</p>
       <div style="margin-top: 25px;">
-        <a href="https://gibbon-assistant.onrender.com/" target="_blank" rel="noopener" class="btn-primary mono" style="display: inline-block;">TEST LIVE APP ↗</a>
+        <a href="https://sreekuttan28.github.io/Mokuttan-Lab/" target="_blank" rel="noopener" class="btn-primary mono" style="display: inline-block;">EXPLORE MOKUTTAN LABS ↗</a>
       </div>
     </div>
     
     <div class="terminal reveal" style="font-size: 11.5px;">
-      <div class="terminal-bar mono"><span>architecture_schema.ascii</span><span>● ● ●</span></div>
-      <div class="terminal-body mono" style="line-height: 1.4; overflow-x: auto; color: var(--accent);">
+      <div class="terminal-bar mono"><span>mokuttan_labs_hub.config</span><span>● ● ●</span></div>
+      <div class="terminal-body mono" style="line-height: 1.5; color: var(--accent);">
+<pre style="margin: 0; font-family: var(--mono);">
+[LABORATORY OVERVIEW]:
+- Creator: Sreehari (Monkey_kuttan / Sreekuttan28)
+- Focus: Python Utilities, AI Vibe Coding, Web Apps
+- Flagship Project: Gibbon AI Assistant & Audio Pipelines
+- Hub Link: sreekuttan28.github.io/Mokuttan-Lab/
+
+[STATUS]: ACTIVE & DEPLOYED
+</pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CINEMATIC 16:9 AUTO-PLAYING SHOWCASE & GIBBON ARCHITECTURE -->
+<section id="gibbon" class="section experiments" style="position: relative; overflow: hidden; padding: 80px 0;">
+  <!-- Semi-Transparent Dark Overlay Gradient for Readability -->
+  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(12,16,19,0.85) 0%, rgba(12,16,19,0.98) 100%); z-index: 1; pointer-events: none;"></div>
+
+  <div style="position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+    <div class="section-head reveal"><span class="mono">06 / GIBBON AI APP ARCHITECTURE</span><span class="rule"></span></div>
+    
+    <!-- 16:9 Responsive Auto-playing Loop Video (No Controls / Apple Style Release) -->
+    <div class="reveal" style="margin-bottom: 40px; border: 1px solid var(--line); background: var(--panel); border-radius: 6px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.6);">
+      <div class="terminal-bar mono">
+        <span>gibbon_video.mp4 (MOKUTTAN LABS AI SHOWCASE)</span>
+        <a href="https://gibbon-assistant.onrender.com/" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none; font-weight: bold;">LAUNCH LIVE APP ↗</a>
+      </div>
+      <div style="position: relative; width: 100%; padding-top: 56.25%;"> <!-- Perfect 16:9 Aspect Ratio -->
+        <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; filter: contrast(1.15) brightness(1.05); border-radius: 4px;">
+          <source src="gibbon_video.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <div class="experiment-layout">
+      <div class="experiment-copy reveal">
+        <h2>Gibbon.<br>AI Web App<br><em>Architecture.</em></h2>
+        <p>Built under Mokuttan Labs using Python & FastAPI, Gibbon combines LLM orchestration, real-time web retrieval, and Edge-TTS voice output into a lightning-fast interactive AI assistant.</p>
+        <div style="margin-top: 25px;">
+          <a href="https://gibbon-assistant.onrender.com/" target="_blank" rel="noopener" class="btn-primary mono" style="display: inline-block;">TEST LIVE APP ↗</a>
+        </div>
+      </div>
+      
+      <div class="terminal reveal" style="font-size: 11.5px;">
+        <div class="terminal-bar mono"><span>architecture_schema.ascii</span><span>● ● ●</span></div>
+        <div class="terminal-body mono" style="line-height: 1.4; overflow-x: auto; color: var(--accent);">
 <pre style="margin: 0; font-family: var(--mono);">
     ┌──────────────────────┐
     │        GIBBON        │
@@ -371,6 +394,7 @@
 USER ➔ GIBBON UI ➔ FASTAPI ➔ 
 AI ORCHESTRATION ➔ [LLM / WEB / VOICE] ➔ RESPONSE
 </pre>
+        </div>
       </div>
     </div>
   </div>
@@ -378,13 +402,14 @@ AI ORCHESTRATION ➔ [LLM / WEB / VOICE] ➔ RESPONSE
 
 <section id="contact" class="closing">
   <div class="closing-grid"></div>
-  <p class="eyebrow mono reveal">LET'S CONNECT / 06</p>
+  <p class="eyebrow mono reveal">LET'S CONNECT / 07</p>
   <h2 class="reveal">BUILD BETTER.<br>AUTOMATE SMARTER.<br><em>SCALE FASTER.</em></h2>
   <p class="closing-sub reveal">Looking for a Business Analyst who can talk to stakeholders, own UAT, and automate workflows? Let's connect via LinkedIn or GitHub.</p>
   
   <div class="social-links reveal">
     <a href="https://www.linkedin.com/in/sreeharinp/" target="_blank" rel="noopener" class="social-btn mono">LINKEDIN ↗</a>
     <a href="http://github.com/Sreekuttan28" target="_blank" rel="noopener" class="social-btn mono">GITHUB ↗</a>
+    <a href="https://sreekuttan28.github.io/Mokuttan-Lab/" target="_blank" rel="noopener" class="social-btn mono">MOKUTTAN LABS ↗</a>
   </div>
 
   <div class="interactive-terminal reveal">
@@ -406,7 +431,7 @@ AI ORCHESTRATION ➔ [LLM / WEB / VOICE] ➔ RESPONSE
 </main>
 
 <footer class="footer mono">
-  <span>SREEHARI — PORTFOLIO V4.0</span>
+  <span>SREEHARI — PORTFOLIO V4.1</span>
   <span>ACTING LEAD & SME</span>
   <span>© 2026</span>
 </footer>
