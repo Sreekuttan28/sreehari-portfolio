@@ -17,7 +17,7 @@
     --border: #E7E5E4;
     --accent: #D97706;
     --accent-glow: rgba(217, 119, 6, 0.1);
-    --nav-bg: #F9F6EE; /* Solid header background color for light mode */
+    --nav-bg: #F9F6EE;
   }
 
   [data-theme="dark"] {
@@ -28,7 +28,7 @@
     --border: #1E293B;
     --accent: #38BDF8;
     --accent-glow: rgba(56, 189, 248, 0.15);
-    --nav-bg: #07090E; /* Solid header background color for dark mode */
+    --nav-bg: #07090E;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -49,6 +49,16 @@
     line-height: 1.35; 
     color: var(--text);
     font-weight: 500;
+  }
+  .signature-name {
+    font-family: 'Caveat', cursive;
+    font-size: 2.4rem;
+    color: var(--accent);
+    display: inline-block;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 2px;
+    margin-top: 15px;
+    line-height: 1;
   }
 
   #starfieldCanvas {
@@ -129,7 +139,6 @@
   }
   .theme-btn:hover { border-color: var(--accent); }
 
-  /* Dynamic Banner Container */
   .banner-container {
     max-width: 1000px;
     margin: 30px auto 0 auto;
@@ -149,7 +158,6 @@
     transition: background 0.4s ease, border-color 0.4s ease;
   }
 
-  /* Atmospheric Lighting Glow behind the banner */
   .banner-glow {
     position: absolute;
     top: 50%;
@@ -320,7 +328,6 @@
     .footer-content { flex-direction: column; text-align: center; }
   }
 
-  /* Compact Minecraft Luffy Companion */
   .luffy-corner {
     position: fixed;
     bottom: 15px;
@@ -356,7 +363,7 @@
 <header>
   <div class="header-top mono">
     <span id="liveClock">LOADING... // BENGALURU, IN</span>
-    <span>SREEHARI.NET // V5.7</span>
+    <span>SREEHARI.NET // V5.8</span>
   </div>
   <div class="header-main">
     <a href="#" class="brand mono" onclick="switchPage('home')">Sreehari.net</a>
@@ -369,7 +376,6 @@
   </div>
 </header>
 
-<!-- Dynamic Rooftop Banner with Ambient Atmospheric Lighting & Sreehari.net overlay -->
 <div class="banner-container">
   <div class="banner-glow"></div>
   <div class="banner-frame">
@@ -402,7 +408,6 @@
         </div>
       </div>
 
-      <!-- Right Sidebar Profile Card -->
       <aside>
         <div class="card" style="margin-bottom: 0;">
           <h3 style="font-size: 1.2rem; margin-bottom: 8px;" class="mono">Sreehari</h3>
@@ -423,13 +428,11 @@
   <div id="page-projects" class="page-view">
     <div class="section-title mono">● Craftsmanship & Deployed Systems</div>
     
-    <!-- Gibbon AI Assistant -->
     <div class="project-showcase">
       <div class="card-meta mono">FLAGSHIP AI ASSISTANT</div>
       <h3>Gibbon AI Web App</h3>
       <p>Gibbon was born from a simple desire: a lightning-fast, highly personalized AI assistant that combines intelligent LLM orchestration with real-time web retrieval and natural Edge-TTS voice generation. Designed with meticulous attention to detail, clean typography, and instant responsiveness.</p>
       
-      <!-- Video Showcase -->
       <div style="margin: 20px 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: #000;">
         <div style="position: relative; width: 100%; padding-top: 56.25%;">
           <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
@@ -448,7 +451,6 @@
       <a href="https://gibbon-assistant.onrender.com/" target="_blank" class="btn-primary mono">Test Live App ↗</a>
     </div>
 
-    <!-- Life Audiology Vatakara -->
     <div class="project-showcase">
       <div class="card-meta mono">HEALTHCARE DIGITAL LAUNCH & SEO</div>
       <h3>Life Audiology & Speech Therapy Centre</h3>
@@ -461,7 +463,6 @@
       <a href="https://lifeaudiologyvatakara.in" target="_blank" class="btn-primary mono">Visit Live Site ↗</a>
     </div>
 
-    <!-- Mokuttan Labs -->
     <div class="project-showcase">
       <div class="card-meta mono">CREATIVE DEVELOPER INCUBATOR</div>
       <h3>Mokuttan Labs Hub</h3>
@@ -475,15 +476,30 @@
     </div>
   </div>
 
-  <!-- ABOUT PAGE -->
+  <!-- ABOUT PAGE (Updated with engaging narrative & signature) -->
   <div id="page-about" class="page-view">
     <div class="content-grid">
       <div>
         <div class="card">
-          <h3 style="font-size: 1.5rem; margin-bottom: 16px;" class="mono">Behind the Code</h3>
-          <p style="color: var(--muted); margin-bottom: 16px;">Living and building out of Bengaluru, I’ve learned over the past 5+ years in tech that great software and data workflows aren't just about syntax—they are about empathy, clarity, and removing friction for humans.</p>
-          <p style="color: var(--muted); margin-bottom: 16px;">Whether I'm writing Python scripts, organizing data attribution pipelines, learning to play the ukulele, or cruising on my motorbike, I approach everything with genuine curiosity.</p>
-          <p style="color: var(--muted);">This website is my digital home—built with clean lines, warm colors, and a touch of anime-inspired life.</p>
+          <h3 style="font-size: 1.5rem; margin-bottom: 20px;" class="mono">Behind the Code</h3>
+          <p style="color: var(--muted); margin-bottom: 16px; font-size: 1.02rem; line-height: 1.7;">
+            Great software and resilient data workflows aren’t just about syntax—they are about empathy, clarity, and removing friction for humans. Living and building out of Bengaluru, I spend my days untangling complex information architectures and turning ambiguity into structured execution.
+          </p>
+          <p style="color: var(--muted); margin-bottom: 16px; font-size: 1.02rem; line-height: 1.7;">
+            When I step away from the terminal, you’ll likely find me strumming my ukulele, exploring new roads on my motorbike, or geeking out over immersive anime worlds. I approach both code and life with relentless curiosity.
+          </p>
+          <p style="color: var(--muted); margin-bottom: 30px; font-size: 1.02rem; line-height: 1.7;">
+            This digital space is my workshop and garden combined—built with clean lines, warm tones, and a whole lot of heart.
+          </p>
+
+          <!-- Narator & Signature Section -->
+          <div style="margin-top: 20px; border-top: 1px dashed var(--border); padding-top: 20px;">
+            <p class="mono" style="font-size: 0.8rem; text-transform: uppercase; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 4px;">Narrator :</p>
+            <div>
+              <span class="signature-name">sreehari</span>
+              <span style="font-family: 'Caveat', cursive; font-size: 2.4rem; color: var(--accent); margin-left: 6px;">..</span>
+            </div>
+          </div>
         </div>
       </div>
       <aside>
@@ -503,7 +519,6 @@
   </div>
 </footer>
 
-<!-- Compact Minecraft-Style Blocky Luffy Companion with Interactive Touch/Click Reactions -->
 <div class="luffy-corner" id="luffyContainer" title="Click me!">
   <div class="speech-bubble mono" id="luffyBubble">Hi there! Welcome! 👋</div>
   <canvas id="luffyCanvas" width="85" height="100" style="image-rendering: pixelated;"></canvas>
@@ -579,7 +594,6 @@
   resizeCanvas();
   drawStars();
 
-  // Dynamic Theme-Aware Banner Art with Ambient Glow
   const bannerCanvas = document.getElementById('bannerArtCanvas');
   const bCtx = bannerCanvas.getContext('2d');
 
@@ -588,24 +602,20 @@
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
 
     if (isDark) {
-      // Cyber / Spaceship Night Deck Banner
       const nightGrad = bCtx.createLinearGradient(0, 0, 0, 220);
       nightGrad.addColorStop(0, '#090d16');
       nightGrad.addColorStop(1, '#111827');
       bCtx.fillStyle = nightGrad;
       bCtx.fillRect(0, 0, 1000, 220);
 
-      // Rooftop floor
       bCtx.fillStyle = '#0f172a';
       bCtx.fillRect(0, 160, 1000, 60);
       bCtx.fillStyle = '#38bdf8';
-      bCtx.fillRect(0, 157, 1000, 3); // glowing neon ledge
+      bCtx.fillRect(0, 157, 1000, 3);
 
-      // Desk
       bCtx.fillStyle = '#1e293b';
       bCtx.fillRect(430, 130, 140, 8);
 
-      // 3 Monitors with Cyber Glow
       bCtx.fillStyle = '#0f172a'; bCtx.fillRect(435, 95, 36, 32);
       bCtx.fillStyle = '#38bdf8'; bCtx.fillRect(437, 97, 32, 26);
 
@@ -615,13 +625,11 @@
       bCtx.fillStyle = '#0f172a'; bCtx.fillRect(529, 95, 36, 32);
       bCtx.fillStyle = '#34d399'; bCtx.fillRect(531, 97, 32, 26);
 
-      // Person vibing
       bCtx.fillStyle = '#38bdf8'; bCtx.fillRect(485, 120, 30, 25);
       bCtx.fillStyle = '#1e293b'; bCtx.fillRect(483, 130, 34, 25);
       bCtx.fillStyle = '#f8fafc'; bCtx.beginPath(); bCtx.arc(500, 118, 11, 0, Math.PI * 2); bCtx.fill();
 
     } else {
-      // Light Mode Watercolor Rooftop
       const skyGrad = bCtx.createLinearGradient(0, 0, 0, 160);
       skyGrad.addColorStop(0, '#fef3c7');
       skyGrad.addColorStop(0.5, '#fed7aa');
@@ -629,17 +637,14 @@
       bCtx.fillStyle = skyGrad;
       bCtx.fillRect(0, 0, 1000, 220);
 
-      // Rooftop floor
       bCtx.fillStyle = '#cbd5e1';
       bCtx.fillRect(0, 160, 1000, 60);
       bCtx.fillStyle = '#94a3b8';
       bCtx.fillRect(0, 155, 1000, 5);
 
-      // Desk
       bCtx.fillStyle = '#78350f';
       bCtx.fillRect(430, 130, 140, 8);
 
-      // 3 Monitors Setup
       bCtx.fillStyle = '#1e293b'; bCtx.fillRect(435, 95, 36, 32);
       bCtx.fillStyle = '#38bdf8'; bCtx.fillRect(437, 97, 32, 26);
 
@@ -649,7 +654,6 @@
       bCtx.fillStyle = '#1e293b'; bCtx.fillRect(529, 95, 36, 32);
       bCtx.fillStyle = '#34d399'; bCtx.fillRect(531, 97, 32, 26);
 
-      // Person sitting & vibing
       bCtx.fillStyle = '#334155'; bCtx.fillRect(485, 120, 30, 25);
       bCtx.fillStyle = '#0284c7'; bCtx.fillRect(483, 130, 34, 25);
       bCtx.fillStyle = '#1c1917'; bCtx.beginPath(); bCtx.arc(500, 118, 11, 0, Math.PI * 2); bCtx.fill();
@@ -658,7 +662,6 @@
 
   drawBannerArt();
 
-  // Minecraft-Style Blocky Luffy with Working Touch/Click Reactions & Inactivity Runner
   const lCanvas = document.getElementById('luffyCanvas');
   const lCtx = lCanvas.getContext('2d');
   const bubble = document.getElementById('luffyBubble');
@@ -713,75 +716,61 @@
       lCtx.translate(runOffset, Math.sin(tick * 0.6) * 4);
     }
 
-    // Shadow
     lCtx.fillStyle = 'rgba(0,0,0,0.2)';
     lCtx.fillRect(22, 92, 40, 6);
 
     let step = isRunning ? Math.sin(tick * 0.5) * 6 : 0;
 
-    // Blocky Legs
     lCtx.fillStyle = '#fde047';
     lCtx.fillRect(28, 76 + step, 10, 16);
     lCtx.fillRect(47, 76 - step, 10, 16);
-    // Shoes
     lCtx.fillStyle = '#1e293b';
     lCtx.fillRect(26, 88 + step, 12, 4);
     lCtx.fillRect(45, 88 - step, 12, 4);
 
-    // Blue Shorts
     lCtx.fillStyle = '#2563eb';
     lCtx.fillRect(25, 66, 35, 12);
     lCtx.fillStyle = '#ca8a04';
     lCtx.fillRect(25, 64, 35, 3);
 
-    // Red Vest / Torso
     lCtx.fillStyle = '#dc2626';
     lCtx.fillRect(24, 40, 37, 26);
     lCtx.fillStyle = '#f87171';
     lCtx.fillRect(28, 43, 29, 20);
-    // Chest opening
     lCtx.fillStyle = '#0f172a';
     lCtx.fillRect(38, 43, 9, 12);
 
-    // Blocky Arms
     lCtx.fillStyle = '#fde047';
     let armWobble = isRunning ? Math.sin(tick * 0.5) * 8 : 0;
     lCtx.fillRect(14, 42 + armWobble, 9, 22);
     lCtx.fillRect(62, 42 - armWobble, 9, 22);
 
-    // Blocky Head (Skin)
     lCtx.fillStyle = '#fde047';
     lCtx.fillRect(22, 16, 41, 26);
 
-    // Hair
     lCtx.fillStyle = '#0f172a';
     lCtx.fillRect(22, 14, 41, 9);
     lCtx.fillRect(20, 18, 5, 10);
 
-    // Eyes & Expression based on click count (mood)
     lCtx.fillStyle = '#0f172a';
     if (clickCount >= 4) {
-      // Angry eyes (X X)
       lCtx.fillRect(30, 26, 4, 4);
       lCtx.fillRect(51, 26, 4, 4);
-      lCtx.fillStyle = '#dc2626'; // Angry vein/frown
+      lCtx.fillStyle = '#dc2626';
       lCtx.fillRect(36, 35, 13, 3);
     } else {
-      // Normal friendly eyes
       lCtx.fillRect(31, 26, 5, 6);
       lCtx.fillRect(49, 26, 5, 6);
-      // Smile
       lCtx.fillStyle = '#0f172a';
       lCtx.fillRect(38, 35, 9, 3);
     }
 
-    // Straw Hat (Blocky Style)
     lCtx.fillStyle = '#d97706';
-    lCtx.fillRect(13, 10, 59, 6); // Brim
+    lCtx.fillRect(13, 10, 59, 6);
     lCtx.fillStyle = '#f59e0b';
-    lCtx.fillRect(24, 2, 37, 9); // Top
+    lCtx.fillRect(24, 2, 37, 9);
     lCtx.fillStyle = '#dc2626';
-    lCtx.fillRect(24, 7, 37, 3); // Ribbon
+    lCtx.fillRect(24, 7, 37, 3);
 
     lCtx.restore();
     tick++;
