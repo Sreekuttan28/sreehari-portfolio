@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #F9F6EE; /* Warm minimal light paper */
+    --bg: #F9F6EE;
     --card-bg: #FFFFFF;
     --text: #1C1917;
     --muted: #57534E;
@@ -45,20 +45,18 @@
   .mono { font-family: 'DM Mono', monospace; }
   .handwriting-intro { 
     font-family: 'Caveat', cursive; 
-    font-size: 2rem; 
-    line-height: 1.4; 
+    font-size: 2.2rem; 
+    line-height: 1.35; 
     color: var(--text);
     font-weight: 500;
   }
 
-  /* Starfield Canvas for Dark Mode */
   #starfieldCanvas {
     position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
     pointer-events: none; z-index: -1; opacity: 0; transition: opacity 0.5s ease;
   }
   [data-theme="dark"] #starfieldCanvas { opacity: 1; }
 
-  /* Top Telemetry & Header Navigation */
   header {
     position: sticky;
     top: 0;
@@ -131,7 +129,6 @@
   }
   .theme-btn:hover { border-color: var(--accent); }
 
-  /* Main Container & Pages */
   main {
     max-width: 1000px;
     margin: 0 auto;
@@ -149,7 +146,6 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* Layout Grid for Home / About */
   .content-grid {
     display: grid;
     grid-template-columns: 1fr 340px;
@@ -158,12 +154,11 @@
   }
 
   @media(max-width: 850px) {
-    .content-grid { display: flex; flex-direction: column-reverse; }
+    .content-grid { display: flex; flex-direction: column; }
     .header-main { flex-direction: column; align-items: flex-start; }
     .nav-menu { width: 100%; justify-content: space-between; }
   }
 
-  /* Cards */
   .card {
     background: var(--card-bg);
     border: 1px solid var(--border);
@@ -173,9 +168,7 @@
     box-shadow: 0 4px 20px rgba(0,0,0,0.03);
     transition: transform 0.2s ease, border-color 0.2s ease;
   }
-  .card:hover {
-    border-color: var(--accent);
-  }
+  .card:hover { border-color: var(--accent); }
 
   .section-title {
     font-size: 0.75rem;
@@ -186,7 +179,6 @@
     font-weight: 700;
   }
 
-  /* Projects Showcase */
   .project-showcase {
     background: var(--card-bg);
     border: 1px solid var(--border);
@@ -239,7 +231,6 @@
   }
   .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
 
-  /* Footer */
   footer {
     border-top: 1px solid var(--border);
     padding: 30px 20px;
@@ -262,11 +253,11 @@
     .footer-content { flex-direction: column; text-align: center; }
   }
 
-  /* Animated Luffy Companion */
+  /* Compact Minecraft Luffy Companion */
   .luffy-corner {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 15px;
+    right: 15px;
     z-index: 999;
     pointer-events: none;
     display: flex;
@@ -277,13 +268,13 @@
   .speech-bubble {
     background: var(--card-bg);
     border: 1px solid var(--border);
-    padding: 10px 16px;
-    border-radius: 12px;
-    font-size: 0.82rem;
-    margin-bottom: 8px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-size: 0.78rem;
+    margin-bottom: 6px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(6px);
     transition: opacity 0.3s ease, transform 0.3s ease;
     pointer-events: auto;
   }
@@ -294,11 +285,10 @@
 
 <canvas id="starfieldCanvas"></canvas>
 
-<!-- Header with Live Date/Time, Brand, and Menu -->
 <header>
   <div class="header-top mono">
     <span id="liveClock">LOADING... // BENGALURU, IN</span>
-    <span>SREEHARI.NET // V5.2</span>
+    <span>SREEHARI.NET // V5.3</span>
   </div>
   <div class="header-main">
     <a href="#" class="brand mono" onclick="switchPage('home')">Sreehari.net</a>
@@ -315,24 +305,24 @@
   <!-- HOME PAGE -->
   <div id="page-home" class="page-view active">
     <div class="content-grid">
-      <!-- Main Intro Feed -->
+      <!-- Intro first, details below -->
       <div>
         <div class="card hero-card">
           <div class="handwriting-intro">
             Hello there, welcome to my corner of the internet! I’m Sreehari—making things happen in Bengaluru. By day, I immerse myself in data attribution workflows, clean systems logic, and problem-solving. By night, I love building AI apps from scratch, tinkering with Python, riding my motorbike, and diving into anime worlds.
           </div>
-          <p style="margin-top: 20px; color: var(--muted); font-size: 0.98rem; line-height: 1.7;">
+          <p style="margin-top: 18px; color: var(--muted); font-size: 0.95rem; line-height: 1.6;">
             This space is where I collect my thoughts, showcase digital craftsmanship, and share the tools I build out of pure curiosity.
           </p>
-          <div style="margin-top: 24px;">
+          <div style="margin-top: 20px;">
             <a class="btn-primary mono" onclick="switchPage('projects')">Explore My Work ➔</a>
           </div>
         </div>
 
         <div class="card">
           <div class="section-title mono">● Recent Focus & Thoughts</div>
-          <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Simplicity is the ultimate sophistication.</h3>
-          <p style="color: var(--muted); font-size: 0.92rem;">Whether untangling complex data attribution logic or orchestrating LLMs with FastAPI, I believe the best engineering feels effortless to the end user.</p>
+          <h3 style="font-size: 1.2rem; margin-bottom: 6px;">Simplicity is the ultimate sophistication.</h3>
+          <p style="color: var(--muted); font-size: 0.9rem;">Whether untangling complex data attribution logic or orchestrating LLMs with FastAPI, I believe the best engineering feels effortless to the end user.</p>
         </div>
       </div>
 
@@ -430,7 +420,6 @@
   </div>
 </main>
 
-<!-- Footer Added -->
 <footer>
   <div class="footer-content mono">
     <span>© 2026 SREEHARI.NET // DESIGNED WITH CURIOSITY</span>
@@ -438,14 +427,13 @@
   </div>
 </footer>
 
-<!-- Advanced Animated 3D Luffy Companion with 30-sec Inactivity Runner -->
+<!-- Compact Minecraft-Style Blocky Luffy Companion with Interactive Moods -->
 <div class="luffy-corner">
-  <div class="speech-bubble mono" id="luffyBubble">Shishishi! Welcome to Sreehari's page! 🍖</div>
-  <canvas id="luffyCanvas" width="130" height="150" style="cursor: pointer;" title="Click me!"></canvas>
+  <div class="speech-bubble mono" id="luffyBubble">Hi there! Welcome! 👋</div>
+  <canvas id="luffyCanvas" width="85" height="100" style="cursor: pointer; image-rendering: pixelated;" title="Click me!"></canvas>
 </div>
 
 <script>
-  // Live Date and Time Widget
   function updateClock() {
     const now = new Date();
     const options = { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
@@ -454,7 +442,6 @@
   setInterval(updateClock, 1000);
   updateClock();
 
-  // Page Switching Function
   function switchPage(pageId) {
     document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
@@ -464,7 +451,6 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // Theme Toggle (Light Default vs Dark Starry Night)
   function toggleTheme() {
     const html = document.documentElement;
     const btn = document.getElementById('themeBtn');
@@ -477,7 +463,6 @@
     }
   }
 
-  // Starfield Canvas Animation
   const canvas = document.getElementById('starfieldCanvas');
   const ctx = canvas.getContext('2d');
   let stars = [];
@@ -517,22 +502,32 @@
   resizeCanvas();
   drawStars();
 
-  // Advanced Luffy Canvas Animation & 30-sec Inactivity Runner
+  // Minecraft-Style Blocky Luffy with Touch/Click Moods & Inactivity Runner
   const lCanvas = document.getElementById('luffyCanvas');
   const lCtx = lCanvas.getContext('2d');
   const bubble = document.getElementById('luffyBubble');
 
   let tick = 0;
-  let hasMeat = false;
+  let clickCount = 0;
+  let moodTimer;
   let isRunning = false;
   let runOffset = 0;
   let inactivityTimer;
+
+  function showSpeech(text) {
+    bubble.textContent = text;
+    bubble.classList.add('visible');
+    clearTimeout(moodTimer);
+    moodTimer = setTimeout(() => {
+      bubble.classList.remove('visible');
+    }, 3000);
+  }
 
   function resetInactivity() {
     clearTimeout(inactivityTimer);
     inactivityTimer = setTimeout(() => {
       triggerLuffyRun();
-    }, 30000); // 30 seconds idle triggers run
+    }, 30000);
   }
 
   window.addEventListener('mousemove', resetInactivity);
@@ -543,111 +538,118 @@
   function triggerLuffyRun() {
     if (isRunning) return;
     isRunning = true;
-    runOffset = -220;
-    bubble.textContent = "Gomu Gomu no Dash! 🏃‍♂️";
-    bubble.classList.add('visible');
+    runOffset = -180;
+    showSpeech("Gomu Gomu no Dash! 🏃‍♂️");
     setTimeout(() => {
-      bubble.classList.remove('visible');
       isRunning = false;
       runOffset = 0;
     }, 4000);
   }
 
-  function drawLuffy() {
-    lCtx.clearRect(0, 0, 130, 150);
+  function drawMinecraftLuffy() {
+    lCtx.clearRect(0, 0, 85, 100);
     lCtx.save();
 
     if (isRunning) {
-      runOffset += 4;
+      runOffset += 3;
       if (runOffset > 0) runOffset = 0;
-      lCtx.translate(runOffset, Math.sin(tick * 0.5) * 5);
+      lCtx.translate(runOffset, Math.sin(tick * 0.6) * 4);
     }
 
     // Shadow
-    lCtx.fillStyle = 'rgba(0,0,0,0.15)';
-    lCtx.beginPath();
-    lCtx.ellipse(65, 142, 22, 6, 0, 0, Math.PI * 2);
-    lCtx.fill();
+    lCtx.fillStyle = 'rgba(0,0,0,0.2)';
+    lCtx.fillRect(22, 92, 40, 6);
 
-    // Legs & Shoes with running motion
-    lCtx.fillStyle = '#fde047';
-    let legSwing = isRunning ? Math.sin(tick * 0.4) * 10 : Math.sin(tick * 0.1) * 2;
-    lCtx.fillRect(52, 110 + legSwing, 8, 25);
-    lCtx.fillStyle = '#1e293b';
-    lCtx.fillRect(50, 132 + legSwing, 12, 6);
-    lCtx.fillStyle = '#fde047';
-    lCtx.fillRect(70, 110 - legSwing, 8, 25);
-    lCtx.fillStyle = '#1e293b';
-    lCtx.fillRect(68, 132 - legSwing, 12, 6);
+    let step = isRunning ? Math.sin(tick * 0.5) * 6 : 0;
 
-    // Blue Denim Shorts
+    // Blocky Legs
+    lCtx.fillStyle = '#fde047';
+    lCtx.fillRect(28, 76 + step, 10, 16);
+    lCtx.fillRect(47, 76 - step, 10, 16);
+    // Shoes
+    lCtx.fillStyle = '#1e293b';
+    lCtx.fillRect(26, 88 + step, 12, 4);
+    lCtx.fillRect(45, 88 - step, 12, 4);
+
+    // Blue Shorts
     lCtx.fillStyle = '#2563eb';
-    lCtx.fillRect(48, 100, 34, 15);
+    lCtx.fillRect(25, 66, 35, 12);
     lCtx.fillStyle = '#ca8a04';
-    lCtx.fillRect(48, 97, 34, 4);
+    lCtx.fillRect(25, 64, 35, 3);
 
-    // Red Vest
+    // Red Vest / Torso
     lCtx.fillStyle = '#dc2626';
-    lCtx.beginPath();
-    lCtx.moveTo(42, 65); lCtx.lineTo(88, 65); lCtx.lineTo(82, 102); lCtx.fill();
+    lCtx.fillRect(24, 40, 37, 26);
     lCtx.fillStyle = '#f87171';
-    lCtx.fillRect(46, 68, 38, 30);
+    lCtx.fillRect(28, 43, 29, 20);
+    // Chest opening
     lCtx.fillStyle = '#0f172a';
-    lCtx.beginPath(); lCtx.moveTo(60, 68); lCtx.lineTo(65, 88); lCtx.lineTo(70, 68); lCtx.fill();
+    lCtx.fillRect(38, 43, 9, 12);
 
-    // Arms
+    // Blocky Arms
     lCtx.fillStyle = '#fde047';
-    let armSwing = isRunning ? Math.sin(tick * 0.4) * 12 : 0;
-    lCtx.fillRect(32, 70 + armSwing, 12, 32);
-    lCtx.fillRect(86, 70 - armSwing, 12, 32);
+    let armWobble = isRunning ? Math.sin(tick * 0.5) * 8 : 0;
+    lCtx.fillRect(14, 42 + armWobble, 9, 22);
+    lCtx.fillRect(62, 42 - armWobble, 9, 22);
 
-    if (hasMeat) {
-      lCtx.fillStyle = '#f8fafc';
-      lCtx.beginPath(); lCtx.ellipse(105, 60, 12, 8, 0, 0, Math.PI*2); lCtx.fill();
-      lCtx.fillStyle = '#991b1b';
-      lCtx.fillRect(100, 56, 8, 8);
+    // Blocky Head (Skin)
+    lCtx.fillStyle = '#fde047';
+    lCtx.fillRect(22, 16, 41, 26);
+
+    // Hair
+    lCtx.fillStyle = '#0f172a';
+    lCtx.fillRect(22, 14, 41, 9);
+    lCtx.fillRect(20, 18, 5, 10);
+
+    // Eyes & Expression based on click count (mood)
+    lCtx.fillStyle = '#0f172a';
+    if (clickCount >= 4) {
+      // Angry eyes (X X)
+      lCtx.fillRect(30, 26, 4, 4);
+      lCtx.fillRect(51, 26, 4, 4);
+      lCtx.fillStyle = '#dc2626'; // Angry vein/frown
+      lCtx.fillRect(36, 35, 13, 3);
+    } else {
+      // Normal friendly eyes
+      lCtx.fillRect(31, 26, 5, 6);
+      lCtx.fillRect(49, 26, 5, 6);
+      // Smile
+      lCtx.fillStyle = '#0f172a';
+      lCtx.fillRect(38, 35, 9, 3);
     }
 
-    // Human-like Defined Head
-    lCtx.fillStyle = '#0f172a';
-    lCtx.beginPath(); lCtx.arc(65, 48, 24, Math.PI, 0, false); lCtx.fill();
-    lCtx.fillStyle = '#fde047';
-    lCtx.beginPath(); lCtx.arc(65, 52, 21, 0, Math.PI * 2); lCtx.fill();
-
-    // Eyes, Scar, Smile
-    lCtx.fillStyle = '#0f172a';
-    lCtx.fillRect(55, 48, 4, 6);
-    lCtx.fillRect(71, 48, 4, 6);
-    lCtx.strokeStyle = '#dc2626'; lCtx.lineWidth = 2;
-    lCtx.beginPath(); lCtx.moveTo(52, 58); lCtx.lineTo(58, 64); lCtx.stroke();
-    lCtx.strokeStyle = '#0f172a'; lCtx.lineWidth = 2.5;
-    lCtx.beginPath(); lCtx.arc(65, 54, 8, 0, Math.PI, false); lCtx.stroke();
-
-    // Straw Hat
+    // Straw Hat (Blocky Style)
     lCtx.fillStyle = '#d97706';
-    lCtx.beginPath(); lCtx.ellipse(65, 32, 38, 10, 0, 0, Math.PI * 2); lCtx.fill();
+    lCtx.fillRect(13, 10, 59, 6); // Brim
     lCtx.fillStyle = '#f59e0b';
-    lCtx.beginPath(); lCtx.arc(65, 22, 22, Math.PI, 0, false); lCtx.fill();
+    lCtx.fillRect(24, 2, 37, 9); // Top
     lCtx.fillStyle = '#dc2626';
-    lCtx.fillRect(43, 22, 44, 6);
+    lCtx.fillRect(24, 7, 37, 3); // Ribbon
 
     lCtx.restore();
     tick++;
-    requestAnimationFrame(drawLuffy);
+    requestAnimationFrame(drawMinecraftLuffy);
   }
-  drawLuffy();
+  drawMinecraftLuffy();
 
   lCanvas.addEventListener('click', () => {
-    hasMeat = !hasMeat;
-    bubble.textContent = hasMeat ? "Shishishi! MEAT!! 🍖" : "Sreehari builds stellar systems! ⚡";
-    bubble.classList.add('visible');
-    setTimeout(() => bubble.classList.remove('visible'), 3000);
+    clickCount++;
+    resetInactivity();
+    if (clickCount === 1) {
+      showSpeech("Hi there! Welcome! 👋");
+    } else if (clickCount === 2) {
+      showSpeech("Having a great time browsing? 🍖");
+    } else if (clickCount === 3) {
+      showSpeech("Hey! Stop poking me so much! 😄");
+    } else {
+      showSpeech("Grrrr! That's enough poking! I'm getting angry! 🔥");
+      if (clickCount > 6) clickCount = 4; // Stay in angry state
+    }
   });
 
   setTimeout(() => {
-    bubble.classList.add('visible');
-    setTimeout(() => bubble.classList.remove('visible'), 4000);
-  }, 1200);
+    showSpeech("Hi there! Welcome! 👋");
+  }, 1000);
 </script>
 </body>
 </html>
