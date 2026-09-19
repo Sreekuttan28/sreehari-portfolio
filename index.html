@@ -4,9 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sreehari.net — Personal Space & Engineering</title>
+<link rel="icon" type="image/png" href="Sreehari_icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #F9F6EE; /* Warm minimal light paper */
@@ -42,6 +43,7 @@
   }
 
   .mono { font-family: 'DM Mono', monospace; }
+  .handwriting { font-family: 'Caveat', cursive; font-size: 2.8rem; line-height: 1.2; color: var(--accent); }
 
   /* Starfield Canvas for Dark Mode */
   #starfieldCanvas {
@@ -169,13 +171,6 @@
     border-color: var(--accent);
   }
 
-  .hero-card h1 {
-    font-size: 2.4rem;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    margin-bottom: 16px;
-  }
-
   .hero-card p {
     color: var(--muted);
     font-size: 1.05rem;
@@ -192,7 +187,7 @@
     font-weight: 700;
   }
 
-  /* Projects Showcase (World-class craftsmanship style) */
+  /* Projects Showcase */
   .project-showcase {
     background: var(--card-bg);
     border: 1px solid var(--border);
@@ -281,7 +276,7 @@
 <header>
   <div class="header-top mono">
     <span id="liveClock">LOADING... // BENGALURU, IN</span>
-    <span>SREEHARI.NET // V5.0</span>
+    <span>SREEHARI.NET // V5.1</span>
   </div>
   <div class="header-main">
     <a href="#" class="brand mono" onclick="switchPage('home')">Sreehari.net</a>
@@ -301,8 +296,8 @@
       <!-- Main Intro Feed -->
       <div>
         <div class="card hero-card">
-          <h1 class="mono">Hello there, welcome to my corner.</h1>
-          <p>I’m Sreehari—born in Payyannur, Kerala, and currently making things happen in Bengaluru. By day, I immerse myself in data attribution workflows, systems logic, and problem-solving. By night, I love building AI apps from scratch, tinkering with Python, riding my motorbike, and diving into anime worlds.</p>
+          <h1 class="handwriting">Hello there, welcome to my corner.</h1>
+          <p>I’m Sreehari—making things happen in Bengaluru. By day, I immerse myself in data attribution workflows, clean systems logic, and problem-solving. By night, I love building AI apps from scratch, tinkering with Python, riding my motorbike, and diving into anime worlds.</p>
           <p>This space is where I collect my thoughts, showcase digital craftsmanship, and share the tools I build out of pure curiosity.</p>
           <div style="margin-top: 24px;">
             <a class="btn-primary mono" onclick="switchPage('projects')">Explore My Work ➔</a>
@@ -312,7 +307,7 @@
         <div class="card">
           <div class="section-title mono">● Recent Focus & Thoughts</div>
           <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Simplicity is the ultimate sophistication.</h3>
-          <p style="color: var(--muted); font-size: 0.92rem;">Whether untangling complex e-commerce attribution data or orchestrating LLMs with FastAPI, I believe the best engineering feels effortless to the end user.</p>
+          <p style="color: var(--muted); font-size: 0.92rem;">Whether untangling complex data attribution logic or orchestrating LLMs with FastAPI, I believe the best engineering feels effortless to the end user.</p>
         </div>
       </div>
 
@@ -333,7 +328,7 @@
     </div>
   </div>
 
-  <!-- PROJECTS PAGE (Human-centric, Apple/Amazon/Samsung grade craftsmanship) -->
+  <!-- PROJECTS PAGE -->
   <div id="page-projects" class="page-view">
     <div class="section-title mono">● Craftsmanship & Deployed Systems</div>
     
@@ -395,7 +390,7 @@
       <div>
         <div class="card">
           <h3 style="font-size: 1.5rem; margin-bottom: 16px;" class="mono">Behind the Code</h3>
-          <p style="color: var(--muted); margin-bottom: 16px;">I grew up surrounded by the lush greenery of Payyannur, Kerala, and today I live and build out of Bengaluru. Over the past 5+ years in IT, I’ve learned that great software and data workflows aren't just about syntax—they are about empathy, clarity, and removing friction for humans.</p>
+          <p style="color: var(--muted); margin-bottom: 16px;">Living and building out of Bengaluru, I’ve learned over the past 5+ years in tech that great software and data workflows aren't just about syntax—they are about empathy, clarity, and removing friction for humans.</p>
           <p style="color: var(--muted); margin-bottom: 16px;">Whether I'm writing Python scripts, organizing data attribution pipelines, learning to play the ukulele, or cruising on my motorbike, I approach everything with genuine curiosity.</p>
           <p style="color: var(--muted);">This website is my digital home—built with clean lines, warm colors, and a touch of anime-inspired life.</p>
         </div>
