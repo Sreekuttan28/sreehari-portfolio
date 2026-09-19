@@ -248,6 +248,15 @@
     flex-wrap: wrap;
     gap: 12px;
   }
+  .footer-content a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px dashed var(--muted);
+  }
+  .footer-content a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
 
   @media(max-width: 600px) {
     .footer-content { flex-direction: column; text-align: center; }
@@ -259,10 +268,11 @@
     bottom: 15px;
     right: 15px;
     z-index: 999;
-    pointer-events: none;
+    pointer-events: auto;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    cursor: pointer;
   }
 
   .speech-bubble {
@@ -288,7 +298,7 @@
 <header>
   <div class="header-top mono">
     <span id="liveClock">LOADING... // BENGALURU, IN</span>
-    <span>SREEHARI.NET // V5.3</span>
+    <span>SREEHARI.NET // V5.4</span>
   </div>
   <div class="header-main">
     <a href="#" class="brand mono" onclick="switchPage('home')">Sreehari.net</a>
@@ -305,7 +315,6 @@
   <!-- HOME PAGE -->
   <div id="page-home" class="page-view active">
     <div class="content-grid">
-      <!-- Intro first, details below -->
       <div>
         <div class="card hero-card">
           <div class="handwriting-intro">
@@ -422,15 +431,15 @@
 
 <footer>
   <div class="footer-content mono">
-    <span>© 2026 SREEHARI.NET // DESIGNED WITH CURIOSITY</span>
+    <span>© 2026 <a href="#" onclick="switchPage('home'); return false;">SREEHARI.NET</a> // DESIGNED WITH CURIOSITY OF <a href="https://sreekuttan28.github.io/Mokuttan-Lab/" target="_blank">MOKUTTAN LABS</a></span>
     <span>BENGALURU, INDIA</span>
   </div>
 </footer>
 
-<!-- Compact Minecraft-Style Blocky Luffy Companion with Interactive Moods -->
-<div class="luffy-corner">
+<!-- Compact Minecraft-Style Blocky Luffy Companion with Interactive Touch/Click Reactions -->
+<div class="luffy-corner" id="luffyContainer" title="Click me!">
   <div class="speech-bubble mono" id="luffyBubble">Hi there! Welcome! 👋</div>
-  <canvas id="luffyCanvas" width="85" height="100" style="cursor: pointer; image-rendering: pixelated;" title="Click me!"></canvas>
+  <canvas id="luffyCanvas" width="85" height="100" style="image-rendering: pixelated;"></canvas>
 </div>
 
 <script>
@@ -502,10 +511,11 @@
   resizeCanvas();
   drawStars();
 
-  // Minecraft-Style Blocky Luffy with Touch/Click Moods & Inactivity Runner
+  // Minecraft-Style Blocky Luffy with Working Touch/Click Reactions & Inactivity Runner
   const lCanvas = document.getElementById('luffyCanvas');
   const lCtx = lCanvas.getContext('2d');
   const bubble = document.getElementById('luffyBubble');
+  const luffyContainer = document.getElementById('luffyContainer');
 
   let tick = 0;
   let clickCount = 0;
@@ -632,7 +642,8 @@
   }
   drawMinecraftLuffy();
 
-  lCanvas.addEventListener('click', () => {
+  luffyContainer.addEventListener('click', (e) => {
+    e.stopPropagation();
     clickCount++;
     resetInactivity();
     if (clickCount === 1) {
@@ -643,7 +654,7 @@
       showSpeech("Hey! Stop poking me so much! 😄");
     } else {
       showSpeech("Grrrr! That's enough poking! I'm getting angry! 🔥");
-      if (clickCount > 6) clickCount = 4; // Stay in angry state
+      if (clickCount > 6) clickCount = 4; // Keep angry state
     }
   });
 
