@@ -181,7 +181,7 @@
     background: radial-gradient(ellipse at center, rgba(56, 189, 248, 0.25) 0%, rgba(0,0,0,0) 70%);
   }
 
-  /* Updated banner title overlay using Caveat handwriting font for "sreehari" */
+  /* Banner title overlay with spacing for "sree hari" */
   .banner-title-overlay {
     position: absolute;
     bottom: 16px;
@@ -369,7 +369,7 @@
 <header>
   <div class="header-top mono">
     <span id="liveClock">LOADING... // BENGALURU, IN</span>
-    <span>SREEHARI.NET // V6.2</span>
+    <span>SREEHARI.NET // V6.3</span>
   </div>
   <div class="header-main">
     <a href="#" class="brand mono" onclick="switchPage('home')">Sreehari.net</a>
@@ -383,10 +383,10 @@
 </header>
 
 <div class="banner-container">
-  <div class="banner-glow"></div><br>
+  <div class="banner-glow"></div>
   <div class="banner-frame">
-    <!-- Updated banner title to "sreehari" in handwritten font style -->
-    <div class="banner-title-overlay">sreehari</div>
+    <!-- Updated with small space to "sree hari" -->
+    <div class="banner-title-overlay"><br>Sreehari</div>
     <canvas id="bannerArtCanvas" width="1000" height="220" style="width: 100%; height: 100%; display: block;"></canvas>
   </div>
 </div>
@@ -401,7 +401,7 @@
             Hello there, welcome to my corner of the internet! I’m Sreehari—making things happen in Bengaluru. By day, I immerse myself in data attribution workflows, clean systems logic, and problem-solving. By night, I love building AI apps from scratch, tinkering with Python, riding my motorbike, and diving into anime worlds.
           </div>
           <div class="quote-box">
-            "Simplicity is the soul of efficiency."
+            "Grow through what you go through." — Unknown
           </div>
           <p style="margin-top: 18px; color: var(--muted); font-size: 0.95rem; line-height: 1.6;">
             This space is where I collect my thoughts, showcase digital craftsmanship, and share the tools I build out of pure curiosity.
@@ -505,7 +505,7 @@
           <div style="margin-top: 20px; border-top: 1px dashed var(--border); padding-top: 20px;">
             <p class="mono" style="font-size: 0.8rem; text-transform: uppercase; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 4px;">Narrator :</p>
             <div>
-              <span class="signature-name">sreehari</span>
+              <span class="signature-name">sree hari</span>
               <span style="font-family: 'Caveat', cursive; font-size: 2.4rem; color: var(--accent); margin-left: 6px;">..</span>
             </div>
           </div>
@@ -724,7 +724,7 @@
     bCtx.font = '12px "DM Mono", monospace';
     bCtx.fillStyle = isDark ? '#38bdf8' : '#b45309';
     bCtx.textAlign = 'right';
-    bCtx.fillText('Grow through what you go through.- Unknown);
+    bCtx.fillText('// 12.9716° N, 77.5946° E (BLR ROOFTOP LAB)', 975, 28);
     bCtx.restore();
   }
 
