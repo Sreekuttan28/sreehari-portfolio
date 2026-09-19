@@ -1,31 +1,33 @@
 <!doctype html>
-<html lang="en" data-theme="normal">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sreehari.net — Thoughts on Data, AI, Systems, and Vibe Coding.</title>
+<title>Sreehari.net — Systems, Data Engineering & Vibe Coding</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f7f3ec;
-    --card-bg: #fffbf5;
-    --text: #2c2825;
-    --muted: #78716c;
-    --border: #e6dfd5;
-    --accent: #9a3412;
-    --nav-bg: rgba(247, 243, 236, 0.9);
+    --bg: #07090e;
+    --card-bg: #0d121c;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --border: #1e293b;
+    --accent: #38bdf8;
+    --accent-glow: rgba(56, 189, 248, 0.15);
+    --nav-bg: rgba(7, 9, 14, 0.85);
   }
 
-  [data-theme="dark"] {
-    --bg: #0f141c;
-    --card-bg: #161d29;
-    --text: #f3f4f6;
-    --muted: #9ca3af;
-    --border: #263147;
-    --accent: #38bdf8;
-    --nav-bg: rgba(15, 20, 28, 0.9);
+  [data-theme="light"] {
+    --bg: #f8fafc;
+    --card-bg: #ffffff;
+    --text: #0f172a;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --accent: #0284c7;
+    --accent-glow: rgba(2, 132, 199, 0.1);
+    --nav-bg: rgba(248, 250, 252, 0.85);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -39,46 +41,46 @@
     overflow-x: hidden;
   }
 
-  .serif { font-family: 'Newsreader', serif; }
+  .mono { font-family: 'DM Mono', monospace; }
 
-  /* Starry background for dark mode */
-  #starryCanvas {
+  /* Starfield Command Canvas */
+  #starfieldCanvas {
     position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-    pointer-events: none; z-index: -1; opacity: 0; transition: opacity 0.5s ease;
+    pointer-events: none; z-index: -1;
   }
-  [data-theme="dark"] #starryCanvas { opacity: 1; }
 
-  /* Header & Aesthetic Navigation */
+  /* Spaceship Header & Telemetry Nav */
   header {
     text-align: center;
-    padding: 60px 20px 30px 20px;
+    padding: 50px 20px 25px 20px;
     border-bottom: 1px solid var(--border);
-    background: var(--bg);
+    background: var(--nav-bg);
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
   }
 
   header h1 {
-    font-family: 'Newsreader', serif;
-    font-size: 3rem;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    margin-bottom: 8px;
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 4px;
   }
 
   header p {
-    font-family: 'Newsreader', serif;
-    font-style: italic;
     color: var(--muted);
-    font-size: 1.15rem;
-    margin-bottom: 24px;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
   }
 
   .subnav {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
-    font-size: 0.85rem;
-    letter-spacing: 0.1em;
+    gap: 25px;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     font-weight: 600;
   }
@@ -92,13 +94,13 @@
   .subnav a:hover, .subnav a.active { color: var(--accent); }
 
   .theme-switch {
-    background: none; border: 1px solid var(--border); color: var(--text);
-    padding: 4px 10px; border-radius: 12px; cursor: pointer; font-size: 0.75rem;
+    background: var(--card-bg); border: 1px solid var(--border); color: var(--text);
+    padding: 4px 12px; border-radius: 20px; cursor: pointer; font-size: 0.75rem;
   }
 
   /* Main Container & Page Views */
   main {
-    max-width: 1050px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 40px 20px 100px 20px;
   }
@@ -110,78 +112,105 @@
   .page-view.active { display: block; }
 
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(12px); }
+    from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* Grid Layout: Left Column Feed, Right Column Bio Card */
+  /* Layout Grids */
   .layout-grid {
     display: grid;
-    grid-template-columns: 1fr 340px;
+    grid-template-columns: 1fr 360px;
     gap: 30px;
     align-items: start;
   }
 
-  @media(max-width: 850px) {
-    .layout-grid { grid-template-columns: 1fr; }
+  @media(max-width: 900px) {
+    .layout-grid { display: flex; flex-direction: column-reverse; }
   }
 
   .section-title {
-    font-size: 0.8rem;
-    letter-spacing: 0.12em;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--muted);
     margin-bottom: 20px;
     font-weight: 600;
   }
 
-  /* Cards */
-  .content-card {
+  /* Cards & Holographic Panels */
+  .space-card {
     background: var(--card-bg);
     border: 1px solid var(--border);
     padding: 28px;
     border-radius: 12px;
     margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     transition: transform 0.2s ease, border-color 0.2s ease;
   }
-  .content-card:hover {
+  .space-card:hover {
     border-color: var(--accent);
+    box-shadow: 0 4px 25px var(--accent-glow);
   }
 
-  .content-meta {
-    font-size: 0.8rem;
-    color: var(--muted);
-    letter-spacing: 0.05em;
-    margin-bottom: 6px;
+  .card-meta {
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
     text-transform: uppercase;
   }
 
-  .content-card h3 {
-    font-family: 'Newsreader', serif;
-    font-size: 1.6rem;
-    font-weight: 500;
+  .space-card h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
     margin-bottom: 10px;
-    line-height: 1.25;
+    letter-spacing: -0.01em;
   }
 
-  .content-card p {
+  .space-card p {
     color: var(--muted);
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     margin-bottom: 16px;
   }
 
-  .read-more {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--text);
-    text-decoration: none;
+  /* Tags */
+  .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .tech-tag {
+    font-size: 0.7rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 3px 8px;
+    border-radius: 4px;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .action-btn {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s ease;
   }
-  .read-more:hover { color: var(--accent); }
+  .action-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-glow);
+  }
 
-  /* Right Sidebar Bio Widget */
+  /* Sidebar Bio Widget */
   .sidebar-card {
     background: var(--card-bg);
     border: 1px solid var(--border);
@@ -190,38 +219,41 @@
   }
 
   .sidebar-card h4 {
-    font-family: 'Newsreader', serif;
-    font-size: 1.3rem;
-    margin-bottom: 12px;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
   }
 
   .sidebar-card p {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     color: var(--muted);
     margin-bottom: 20px;
   }
 
-  .connect-links {
-    list-style: none;
-  }
-  .connect-links li {
-    margin-bottom: 8px;
-  }
-  .connect-links a {
+  .connect-list { list-style: none; }
+  .connect-list li { margin-bottom: 10px; }
+  .connect-list a {
     color: var(--text);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     display: flex;
     align-items: center;
     gap: 8px;
   }
-  .connect-links a:hover { color: var(--accent); }
+  .connect-list a:hover { color: var(--accent); }
 
-  /* Animated 3D/Canvas Advanced Gomu Gomu Luffy Companion */
+  /* Projects Grid */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media(max-width: 750px) { .projects-grid { grid-template-columns: 1fr; } }
+
+  /* Animated Luffy Companion */
   .luffy-corner {
     position: fixed;
-    bottom: 20px;
-    right: 30px;
+    bottom: 25px;
+    right: 25px;
     z-index: 999;
     pointer-events: none;
     display: flex;
@@ -232,128 +264,168 @@
   .speech-bubble {
     background: var(--card-bg);
     border: 1px solid var(--border);
-    padding: 10px 16px;
-    border-radius: 12px;
-    font-size: 0.85rem;
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-size: 0.8rem;
     margin-bottom: 8px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(8px);
     transition: opacity 0.3s ease, transform 0.3s ease;
     pointer-events: auto;
-    font-family: 'Newsreader', serif;
-    font-style: italic;
   }
   .speech-bubble.visible { opacity: 1; transform: translateY(0); }
-
-  /* Projects Grid View */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-  @media(max-width: 700px) { .projects-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
 
-<canvas id="starryCanvas"></canvas>
+<canvas id="starfieldCanvas"></canvas>
 
-<!-- Top Aesthetic Title & Navigation -->
+<!-- Spaceship Header & Telemetry Nav -->
 <header>
-  <h1>Sreehari.net</h1>
-  <p>Thoughts on data systems, AI workflows, vibe coding, and anime.</p>
+  <h1 class="mono">Sreehari.net</h1>
+  <p class="mono">SYSTEMS // DATA ATTRIBUTION // VIBE CODING</p>
   
   <nav class="subnav">
-    <a onclick="switchPage('feed')" id="nav-feed" class="active">Archive</a>
-    <a onclick="switchPage('projects')" id="nav-projects">Projects</a>
-    <a onclick="switchPage('about')" id="nav-about">About</a>
-    <button class="theme-switch" onclick="toggleTheme()" id="themeBtn">🌙 Night</button>
+    <a onclick="switchPage('chronicles')" id="nav-chronicles" class="active">Chronicles</a>
+    <a onclick="switchPage('constellations')" id="nav-constellations">Constellations</a>
+    <a onclick="switchPage('coordinates')" id="nav-coordinates">Coordinates</a>
+    <button class="theme-switch mono" onclick="toggleTheme()" id="themeBtn">☀️ Light</button>
   </nav>
 </header>
 
 <main>
-  <!-- PAGE 1: FEED / ARCHIVE -->
-  <div id="page-feed" class="page-view active">
+  <!-- PAGE 1: CHRONICLES (Writings & Mobile Priority Profile) -->
+  <div id="page-chronicles" class="page-view active">
     <div class="layout-grid">
       <div>
-        <div class="section-title">● Latest Posts & Essays</div>
+        <div class="section-title">● Flight Logs & Essays</div>
         
-        <article class="content-card">
-          <div class="content-meta">Sep 18, 2026 • 5 Min Read</div>
+        <article class="space-card">
+          <div class="card-meta mono">LOG #01 • SEP 18, 2026</div>
           <h3>Translating Complex Business Ambiguity into Structured Data Pipelines</h3>
-          <p>Reflecting on over 5 years of IT experience as an Acting Lead and Business Analyst—how clear data attribution models prevent downstream catastrophes.</p>
-          <a class="read-more" onclick="switchPage('projects')">Explore Work →</a>
+          <p>Reflecting on over 5 years of IT experience as an Acting Lead and Business Analyst—how precise data attribution models and UAT validation prevent downstream pipeline failures.</p>
+          <div class="tech-tags">
+            <span class="tech-tag">Business Analysis</span>
+            <span class="tech-tag">Data Attribution</span>
+            <span class="tech-tag">UAT Testing</span>
+          </div>
+          <a class="action-btn mono" onclick="switchPage('constellations')">View Constellations →</a>
         </article>
 
-        <article class="content-card">
-          <div class="content-meta">Aug 29, 2026 • 4 Min Read</div>
-          <h3>Vibe Coding with FastAPI and LLMs</h3>
-          <p>Why building rapid prototypes like Gibbon changes how we look at software development, transforming ideas into live products in hours.</p>
-          <a class="read-more" onclick="switchPage('projects')">Read More →</a>
+        <article class="space-card">
+          <div class="card-meta mono">LOG #02 • AUG 29, 2026</div>
+          <h3>Vibe Coding with FastAPI and LLM Orchestration</h3>
+          <p>Exploring how building rapid prototypes like Gibbon transforms how we approach software development, taking concepts from zero to live production in hours.</p>
+          <div class="tech-tags">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">FastAPI</span>
+            <span class="tech-tag">AI Workflows</span>
+          </div>
+          <a class="action-btn mono" onclick="switchPage('constellations')">Explore App →</a>
         </article>
       </div>
 
-      <!-- Right Sidebar Profile Card -->
+      <!-- Right Sidebar Profile (Displays at top on mobile) -->
       <aside>
-        <div class="sidebar-card">
-          <h4>Hi there!</h4>
-          <p>Welcome to my corner of the internet. I'm Sreehari, an Acting Lead & Business Analyst living in Bengaluru, building data workflows by day and vibe-coding AI apps by night.</p>
-          <div class="section-title" style="margin-bottom: 10px;">Connect</div>
-          <ul class="connect-links">
-            <li><a href="https://www.linkedin.com/in/sreeharinp/" target="_blank">💼 LinkedIn Profile</a></li>
-            <li><a href="http://github.com/Sreekuttan28" target="_blank">💻 GitHub Repository</a></li>
-            <li><a href="https://sreekuttan28.github.io/Mokuttan-Lab/" target="_blank">🧪 Mokuttan Labs</a></li>
+        <div class="sidebar-card space-card" style="margin-bottom:0;">
+          <h4 class="mono">Sreehari // Acting Lead & SME</h4>
+          <p>Over 5 years of IT experience specializing in product data workflows, attribution integrity, and process automation at Infosys. Vibe coder and anime enthusiast by night.</p>
+          <div class="section-title" style="margin-bottom: 10px;">Comms Channel</div>
+          <ul class="connect-list mono">
+            <li><a href="https://www.linkedin.com/in/sreeharinp/" target="_blank">💼 LinkedIn Profile ↗</a></li>
+            <li><a href="http://github.com/Sreekuttan28" target="_blank">💻 GitHub Repository ↗</a></li>
+            <li><a href="https://sreekuttan28.github.io/Mokuttan-Lab/" target="_blank">🧪 Mokuttan Labs ↗</a></li>
           </ul>
         </div>
       </aside>
     </div>
   </div>
 
-  <!-- PAGE 2: PROJECTS / WORKS -->
-  <div id="page-projects" class="page-view">
-    <div class="section-title">● Selected Works & Systems</div>
-    <div class="projects-grid">
-      <div class="content-card">
-        <div class="content-meta">Flagship AI App</div>
+  <!-- PAGE 2: CONSTELLATIONS (Projects & Works) -->
+  <div id="page-constellations" class="page-view">
+    <div class="section-title">● Deployed Systems & Projects</div>
+    
+    <div class="projects-grid" style="margin-bottom: 20px;">
+      <!-- Gibbon AI Assistant -->
+      <div class="space-card" style="margin-bottom:0;">
+        <div class="card-meta mono">FLAGSHIP AI APP</div>
         <h3>Gibbon AI Assistant</h3>
-        <p>Built using Python, FastAPI, and Groq/Gemini orchestration with real-time web retrieval and Edge-TTS voice generation.</p>
-        <a href="https://gibbon-assistant.onrender.com/" target="_blank" class="read-more">Launch Live App ↗</a>
+        <p>An intelligent assistant built with Python & FastAPI featuring LLM orchestration (Groq/Gemini), real-time web retrieval, and Edge-TTS voice generation.</p>
+        
+        <!-- Embedded Video Showcase -->
+        <div style="margin: 15px 0; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; background: #000;">
+          <div style="position: relative; width: 100%; padding-top: 56.25%;">
+            <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+              <source src="gibbon_video.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+
+        <div class="tech-tags">
+          <span class="tech-tag">FastAPI</span>
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Groq/Gemini</span>
+          <span class="tech-tag">Edge-TTS</span>
+        </div>
+        <a href="https://gibbon-assistant.onrender.com/" target="_blank" class="action-btn mono">Launch Live App ↗</a>
       </div>
 
-      <div class="content-card">
-        <div class="content-meta">Developer Incubator</div>
-        <h3>Mokuttan Labs Hub</h3>
-        <p>Personal developer hub and showcase container for experimental web tools, localized SEO builds, and automated data scripts.</p>
-        <a href="https://sreekuttan28.github.io/Mokuttan-Lab/" target="_blank" class="read-more">Visit Labs ↗</a>
+      <!-- Life Audiology Vatakara -->
+      <div class="space-card" style="margin-bottom:0;">
+        <div class="card-meta mono">DIGITAL LAUNCH & SEO</div>
+        <h3>Life Audiology Vatakara</h3>
+        <p>Led the digital launch, web development, and localized search engine optimization campaign for the 11th branch of Life Audiology And Speech Therapy Centre.</p>
+        <div class="tech-tags" style="margin-top: 25px;">
+          <span class="tech-tag">Web Dev</span>
+          <span class="tech-tag">Local SEO</span>
+          <span class="tech-tag">Brand Assets</span>
+        </div>
+        <div style="margin-top: 40px;">
+          <a href="https://lifeaudiologyvatakara.in" target="_blank" class="action-btn mono">Visit Live Site ↗</a>
+        </div>
       </div>
+    </div>
+
+    <!-- Mokuttan Labs Hub -->
+    <div class="space-card">
+      <div class="card-meta mono">DEVELOPER INCUBATOR</div>
+      <h3>Mokuttan Labs Hub</h3>
+      <p>Personal developer hub and showcase container housing experimental Python utilities, automation pipelines, and localized web apps.</p>
+      <div class="tech-tags">
+        <span class="tech-tag">GitHub Pages</span>
+        <span class="tech-tag">Automation</span>
+        <span class="tech-tag">UI Design</span>
+      </div>
+      <a href="https://sreekuttan28.github.io/Mokuttan-Lab/" target="_blank" class="action-btn mono">Explore Labs Hub ↗</a>
     </div>
   </div>
 
-  <!-- PAGE 3: ABOUT -->
-  <div id="page-about" class="page-view">
+  <!-- PAGE 3: COORDINATES (About & Philosophy) -->
+  <div id="page-coordinates" class="page-view">
     <div class="layout-grid">
       <div>
-        <div class="section-title">● Background & Philosophy</div>
-        <article class="content-card">
-          <h3>Systems, Analytics, and Creative Energy</h3>
-          <p style="margin-bottom: 14px;">I have spent over 5 years working in IT environments, managing product data attribution, leading UAT validation cycles, and bridging communication gaps between business stakeholders and technical execution teams.</p>
-          <p>In my personal time, I love experimenting with code architectures, designing digital assets, and diving deep into anime worlds. This site serves as my digital garden for thoughts and code.</p>
+        <div class="section-title">● Navigation Coordinates & Background</div>
+        <article class="space-card">
+          <h3>Engineering Robust Data Workflows</h3>
+          <p style="margin-bottom: 14px;">With over 4 years of IT experience at Infosys as an Acting Lead and Subject Matter Expert, I specialize in managing complex product data attribution workflows, designing automated KNIME/Excel pipelines, and executing rigorous UAT cycles.</p>
+          <p>Beyond the enterprise workspace, I operate Mokuttan Labs—a creative incubator where I build AI web applications, experiment with audio synthesis, and blend clean technical architecture with anime-inspired companion elements.</p>
         </article>
       </div>
       <aside>
-        <div class="sidebar-card">
-          <h4>Core Toolkit</h4>
-          <p>Python, FastAPI, SQL, KNIME, Advanced Excel, Power Query, GitHub Pages, and Vibe Coding workflows.</p>
+        <div class="sidebar-card space-card" style="margin-bottom:0;">
+          <h4 class="mono">Technical Arsenal</h4>
+          <p>SQL, Python, FastAPI, KNIME, Advanced Excel, Power Query, GitHub Pages, and Vibe Coding frameworks.</p>
         </div>
       </aside>
     </div>
   </div>
 </main>
 
-<!-- Advanced Animated 3D/Canvas Gomu Gomu Luffy Companion -->
+<!-- Advanced 3D-Styled Luffy Companion with 30-sec Inactivity Runner -->
 <div class="luffy-corner">
-  <div class="speech-bubble" id="luffyBubble">Shishishi! Welcome to Sreehari's world! 🍖</div>
+  <div class="speech-bubble mono" id="luffyBubble">Shishishi! Welcome aboard! 🍖</div>
   <canvas id="luffyCanvas" width="130" height="150" style="cursor: pointer;" title="Click me!"></canvas>
 </div>
 
@@ -368,21 +440,21 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // Theme Toggle (Parchment vs Starry Night)
+  // Theme Toggle (Spaceship Dark vs Clean Light)
   function toggleTheme() {
     const html = document.documentElement;
     const btn = document.getElementById('themeBtn');
-    if (html.getAttribute('data-theme') === 'normal') {
-      html.setAttribute('data-theme', 'dark');
-      btn.textContent = '☀️ Parchment';
+    if (html.getAttribute('data-theme') === 'dark') {
+      html.setAttribute('data-theme', 'light');
+      btn.textContent = '🌙 Dark';
     } else {
-      html.setAttribute('data-theme', 'normal');
-      btn.textContent = '🌙 Night';
+      html.setAttribute('data-theme', 'dark');
+      btn.textContent = '☀️ Light';
     }
   }
 
-  // Starry Background Canvas Animation
-  const canvas = document.getElementById('starryCanvas');
+  // Starfield Command Canvas Animation
+  const canvas = document.getElementById('starfieldCanvas');
   const ctx = canvas.getContext('2d');
   let stars = [];
 
@@ -390,21 +462,22 @@
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     stars = [];
-    const count = Math.floor((canvas.width * canvas.height) / 9000);
+    const count = Math.floor((canvas.width * canvas.height) / 7000);
     for (let i = 0; i < count; i++) {
       stars.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         r: Math.random() * 1.5 + 0.5,
         alpha: Math.random(),
-        speed: Math.random() * 0.02 + 0.005
+        speed: Math.random() * 0.03 + 0.005
       });
     }
   }
 
   function drawStars() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = '#ffffff';
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    ctx.fillStyle = isDark ? '#ffffff' : '#0f172a';
     stars.forEach(s => {
       s.alpha += s.speed;
       if (s.alpha > 1 || s.alpha < 0.2) s.speed = -s.speed;
@@ -446,7 +519,7 @@
   function triggerLuffyRun() {
     if (isRunning) return;
     isRunning = true;
-    runOffset = -250;
+    runOffset = -220;
     bubble.textContent = "Gomu Gomu no Dash! 🏃‍♂️";
     bubble.classList.add('visible');
     setTimeout(() => {
@@ -467,7 +540,7 @@
     }
 
     // Shadow
-    lCtx.fillStyle = 'rgba(0,0,0,0.15)';
+    lCtx.fillStyle = 'rgba(0,0,0,0.2)';
     lCtx.beginPath();
     lCtx.ellipse(65, 142, 22, 6, 0, 0, Math.PI * 2);
     lCtx.fill();
@@ -475,11 +548,9 @@
     // Legs & Shoes with running motion
     lCtx.fillStyle = '#fde047';
     let legSwing = isRunning ? Math.sin(tick * 0.4) * 10 : Math.sin(tick * 0.1) * 2;
-    // Left leg
     lCtx.fillRect(52, 110 + legSwing, 8, 25);
     lCtx.fillStyle = '#1e293b';
     lCtx.fillRect(50, 132 + legSwing, 12, 6);
-    // Right leg
     lCtx.fillStyle = '#fde047';
     lCtx.fillRect(70, 110 - legSwing, 8, 25);
     lCtx.fillStyle = '#1e293b';
@@ -497,15 +568,14 @@
     lCtx.moveTo(42, 65); lCtx.lineTo(88, 65); lCtx.lineTo(82, 102); lCtx.fill();
     lCtx.fillStyle = '#f87171';
     lCtx.fillRect(46, 68, 38, 30);
-    // Chest opening
     lCtx.fillStyle = '#0f172a';
     lCtx.beginPath(); lCtx.moveTo(60, 68); lCtx.lineTo(65, 88); lCtx.lineTo(70, 68); lCtx.fill();
 
     // Arms
     lCtx.fillStyle = '#fde047';
     let armSwing = isRunning ? Math.sin(tick * 0.4) * 12 : 0;
-    lCtx.fillRect(32, 70 + armSwing, 12, 32); // Left arm
-    lCtx.fillRect(86, 70 - armSwing, 12, 32); // Right arm
+    lCtx.fillRect(32, 70 + armSwing, 12, 32);
+    lCtx.fillRect(86, 70 - armSwing, 12, 32);
 
     if (hasMeat) {
       lCtx.fillStyle = '#f8fafc';
@@ -515,22 +585,17 @@
     }
 
     // Human-like Defined Head
-    lCtx.fillStyle = '#0f172a'; // Hair
+    lCtx.fillStyle = '#0f172a';
     lCtx.beginPath(); lCtx.arc(65, 48, 24, Math.PI, 0, false); lCtx.fill();
-
-    lCtx.fillStyle = '#fde047'; // Face Skin
+    lCtx.fillStyle = '#fde047';
     lCtx.beginPath(); lCtx.arc(65, 52, 21, 0, Math.PI * 2); lCtx.fill();
 
-    // Facial Features (Eyes, Scar, Smile)
+    // Eyes, Scar, Smile
     lCtx.fillStyle = '#0f172a';
-    lCtx.fillRect(55, 48, 4, 6); // Left eye
-    lCtx.fillRect(71, 48, 4, 6); // Right eye
-    
-    // Scar under left eye
+    lCtx.fillRect(55, 48, 4, 6);
+    lCtx.fillRect(71, 48, 4, 6);
     lCtx.strokeStyle = '#dc2626'; lCtx.lineWidth = 2;
     lCtx.beginPath(); lCtx.moveTo(52, 58); lCtx.lineTo(58, 64); lCtx.stroke();
-
-    // Smile
     lCtx.strokeStyle = '#0f172a'; lCtx.lineWidth = 2.5;
     lCtx.beginPath(); lCtx.arc(65, 54, 8, 0, Math.PI, false); lCtx.stroke();
 
@@ -539,7 +604,7 @@
     lCtx.beginPath(); lCtx.ellipse(65, 32, 38, 10, 0, 0, Math.PI * 2); lCtx.fill();
     lCtx.fillStyle = '#f59e0b';
     lCtx.beginPath(); lCtx.arc(65, 22, 22, Math.PI, 0, false); lCtx.fill();
-    lCtx.fillStyle = '#dc2626'; // Ribbon
+    lCtx.fillStyle = '#dc2626';
     lCtx.fillRect(43, 22, 44, 6);
 
     lCtx.restore();
@@ -550,7 +615,7 @@
 
   lCanvas.addEventListener('click', () => {
     hasMeat = !hasMeat;
-    bubble.textContent = hasMeat ? "Shishishi! MEAT!! 🍖" : "Sreehari builds awesome tools! ⚡";
+    bubble.textContent = hasMeat ? "Shishishi! MEAT!! 🍖" : "Sreehari builds stellar systems! ⚡";
     bubble.classList.add('visible');
     setTimeout(() => bubble.classList.remove('visible'), 3000);
   });
