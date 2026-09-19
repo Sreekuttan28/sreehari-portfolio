@@ -1,33 +1,33 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sreehari.net — Systems, Data Engineering & Vibe Coding</title>
+<title>Sreehari.net — Personal Space & Engineering</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #07090e;
-    --card-bg: #0d121c;
-    --text: #f1f5f9;
-    --muted: #94a3b8;
-    --border: #1e293b;
-    --accent: #38bdf8;
-    --accent-glow: rgba(56, 189, 248, 0.15);
-    --nav-bg: rgba(7, 9, 14, 0.85);
+    --bg: #F9F6EE; /* Warm minimal light paper */
+    --card-bg: #FFFFFF;
+    --text: #1C1917;
+    --muted: #57534E;
+    --border: #E7E5E4;
+    --accent: #D97706;
+    --accent-glow: rgba(217, 119, 6, 0.1);
+    --nav-bg: rgba(249, 246, 238, 0.9);
   }
 
-  [data-theme="light"] {
-    --bg: #f8fafc;
-    --card-bg: #ffffff;
-    --text: #0f172a;
-    --muted: #64748b;
-    --border: #e2e8f0;
-    --accent: #0284c7;
-    --accent-glow: rgba(2, 132, 199, 0.1);
-    --nav-bg: rgba(248, 250, 252, 0.85);
+  [data-theme="dark"] {
+    --bg: #0C1017;
+    --card-bg: #141B26;
+    --text: #F8FAFC;
+    --muted: #94A3B8;
+    --border: #1E293B;
+    --accent: #38BDF8;
+    --accent-glow: rgba(56, 189, 248, 0.15);
+    --nav-bg: rgba(12, 16, 23, 0.9);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -43,64 +43,89 @@
 
   .mono { font-family: 'DM Mono', monospace; }
 
-  /* Starfield Command Canvas */
+  /* Starfield Canvas for Dark Mode */
   #starfieldCanvas {
     position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-    pointer-events: none; z-index: -1;
+    pointer-events: none; z-index: -1; opacity: 0; transition: opacity 0.5s ease;
   }
+  [data-theme="dark"] #starfieldCanvas { opacity: 1; }
 
-  /* Spaceship Header & Telemetry Nav */
+  /* Top Telemetry & Header Navigation */
   header {
-    text-align: center;
-    padding: 50px 20px 25px 20px;
-    border-bottom: 1px solid var(--border);
-    background: var(--nav-bg);
-    backdrop-filter: blur(12px);
     position: sticky;
     top: 0;
     z-index: 100;
+    background: var(--nav-bg);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px;
   }
 
-  header h1 {
-    font-size: 2.4rem;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    margin-bottom: 4px;
-  }
-
-  header p {
-    color: var(--muted);
-    font-size: 0.95rem;
-    margin-bottom: 20px;
-  }
-
-  .subnav {
+  .header-top {
+    max-width: 1000px;
+    margin: 0 auto 12px auto;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 25px;
-    font-size: 0.8rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    font-weight: 600;
+    font-size: 0.75rem;
+    color: var(--muted);
+    border-bottom: 1px dashed var(--border);
+    padding-bottom: 8px;
   }
 
-  .subnav a {
+  .header-main {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .brand {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .nav-menu a {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
     color: var(--muted);
     text-decoration: none;
     cursor: pointer;
     transition: color 0.2s;
   }
-  .subnav a:hover, .subnav a.active { color: var(--accent); }
+  .nav-menu a:hover, .nav-menu a.active { color: var(--accent); }
 
-  .theme-switch {
-    background: var(--card-bg); border: 1px solid var(--border); color: var(--text);
-    padding: 4px 12px; border-radius: 20px; cursor: pointer; font-size: 0.75rem;
+  .theme-btn {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 6px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 600;
+    transition: all 0.2s;
   }
+  .theme-btn:hover { border-color: var(--accent); }
 
-  /* Main Container & Page Views */
+  /* Main Container & Pages */
   main {
-    max-width: 1100px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 40px 20px 100px 20px;
   }
@@ -112,20 +137,50 @@
   .page-view.active { display: block; }
 
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
+    from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* Layout Grids */
-  .layout-grid {
+  /* Layout Grid for Home / About */
+  .content-grid {
     display: grid;
-    grid-template-columns: 1fr 360px;
+    grid-template-columns: 1fr 340px;
     gap: 30px;
     align-items: start;
   }
 
-  @media(max-width: 900px) {
-    .layout-grid { display: flex; flex-direction: column-reverse; }
+  @media(max-width: 850px) {
+    .content-grid { display: flex; flex-direction: column-reverse; }
+    .header-main { flex-direction: column; align-items: flex-start; }
+    .nav-menu { width: 100%; justify-content: space-between; }
+  }
+
+  /* Cards */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 32px;
+    border-radius: 16px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .card:hover {
+    border-color: var(--accent);
+  }
+
+  .hero-card h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+  }
+
+  .hero-card p {
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin-bottom: 20px;
+    line-height: 1.7;
   }
 
   .section-title {
@@ -133,127 +188,68 @@
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--muted);
-    margin-bottom: 20px;
-    font-weight: 600;
+    margin-bottom: 16px;
+    font-weight: 700;
   }
 
-  /* Cards & Holographic Panels */
-  .space-card {
+  /* Projects Showcase (World-class craftsmanship style) */
+  .project-showcase {
     background: var(--card-bg);
     border: 1px solid var(--border);
-    padding: 28px;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    transition: transform 0.2s ease, border-color 0.2s ease;
-  }
-  .space-card:hover {
-    border-color: var(--accent);
-    box-shadow: 0 4px 25px var(--accent-glow);
+    border-radius: 16px;
+    padding: 36px;
+    margin-bottom: 30px;
   }
 
-  .card-meta {
-    font-size: 0.75rem;
-    color: var(--accent);
-    letter-spacing: 0.1em;
-    margin-bottom: 8px;
-    text-transform: uppercase;
-  }
-
-  .space-card h3 {
-    font-size: 1.4rem;
+  .project-showcase h3 {
+    font-size: 1.6rem;
     font-weight: 700;
-    margin-bottom: 10px;
-    letter-spacing: -0.01em;
+    margin-bottom: 12px;
   }
 
-  .space-card p {
+  .project-showcase p {
     color: var(--muted);
-    font-size: 0.92rem;
-    margin-bottom: 16px;
+    font-size: 0.98rem;
+    margin-bottom: 20px;
+    line-height: 1.7;
   }
 
-  /* Tags */
-  .tech-tags {
+  .tech-pills {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
   }
-  .tech-tag {
-    font-size: 0.7rem;
+  .tech-pill {
+    font-size: 0.75rem;
     background: var(--bg);
     border: 1px solid var(--border);
-    padding: 3px 8px;
-    border-radius: 4px;
+    padding: 4px 10px;
+    border-radius: 6px;
     color: var(--muted);
-    text-transform: uppercase;
+    font-weight: 500;
   }
 
-  .action-btn {
+  .btn-primary {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--text);
-    background: var(--bg);
-    border: 1px solid var(--border);
-    padding: 8px 16px;
-    border-radius: 6px;
-    text-decoration: none;
-    transition: all 0.2s ease;
-  }
-  .action-btn:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    background: var(--accent-glow);
-  }
-
-  /* Sidebar Bio Widget */
-  .sidebar-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    padding: 24px;
-    border-radius: 12px;
-  }
-
-  .sidebar-card h4 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-  }
-
-  .sidebar-card p {
-    font-size: 0.88rem;
-    color: var(--muted);
-    margin-bottom: 20px;
-  }
-
-  .connect-list { list-style: none; }
-  .connect-list li { margin-bottom: 10px; }
-  .connect-list a {
-    color: var(--text);
-    text-decoration: none;
-    font-size: 0.88rem;
-    display: flex;
-    align-items: center;
     gap: 8px;
+    background: var(--text);
+    color: var(--bg);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.2s;
   }
-  .connect-list a:hover { color: var(--accent); }
-
-  /* Projects Grid */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-  @media(max-width: 750px) { .projects-grid { grid-template-columns: 1fr; } }
+  .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
 
   /* Animated Luffy Companion */
   .luffy-corner {
     position: fixed;
-    bottom: 25px;
-    right: 25px;
+    bottom: 20px;
+    right: 20px;
     z-index: 999;
     pointer-events: none;
     display: flex;
@@ -264,11 +260,11 @@
   .speech-bubble {
     background: var(--card-bg);
     border: 1px solid var(--border);
-    padding: 8px 14px;
-    border-radius: 10px;
-    font-size: 0.8rem;
+    padding: 10px 16px;
+    border-radius: 12px;
+    font-size: 0.82rem;
     margin-bottom: 8px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     opacity: 0;
     transform: translateY(8px);
     transition: opacity 0.3s ease, transform 0.3s ease;
@@ -281,179 +277,179 @@
 
 <canvas id="starfieldCanvas"></canvas>
 
-<!-- Spaceship Header & Telemetry Nav -->
+<!-- Header with Live Date/Time, Brand, and Menu -->
 <header>
-  <h1 class="mono">Sreehari.net</h1>
-  <p class="mono">SYSTEMS // DATA ATTRIBUTION // VIBE CODING</p>
-  
-  <nav class="subnav">
-    <a onclick="switchPage('chronicles')" id="nav-chronicles" class="active">Chronicles</a>
-    <a onclick="switchPage('constellations')" id="nav-constellations">Constellations</a>
-    <a onclick="switchPage('coordinates')" id="nav-coordinates">Coordinates</a>
-    <button class="theme-switch mono" onclick="toggleTheme()" id="themeBtn">☀️ Light</button>
-  </nav>
+  <div class="header-top mono">
+    <span id="liveClock">LOADING... // BENGALURU, IN</span>
+    <span>SREEHARI.NET // V5.0</span>
+  </div>
+  <div class="header-main">
+    <a href="#" class="brand mono" onclick="switchPage('home')">Sreehari.net</a>
+    <nav class="nav-menu">
+      <a onclick="switchPage('home')" id="nav-home" class="active">Home</a>
+      <a onclick="switchPage('projects')" id="nav-projects">Projects</a>
+      <a onclick="switchPage('about')" id="nav-about">About</a>
+      <button class="theme-btn mono" onclick="toggleTheme()" id="themeBtn">🌙 Dark Mode</button>
+    </nav>
+  </div>
 </header>
 
 <main>
-  <!-- PAGE 1: CHRONICLES (Writings & Mobile Priority Profile) -->
-  <div id="page-chronicles" class="page-view active">
-    <div class="layout-grid">
+  <!-- HOME PAGE -->
+  <div id="page-home" class="page-view active">
+    <div class="content-grid">
+      <!-- Main Intro Feed -->
       <div>
-        <div class="section-title">● Flight Logs & Essays</div>
-        
-        <article class="space-card">
-          <div class="card-meta mono">LOG #01 • SEP 18, 2026</div>
-          <h3>Translating Complex Business Ambiguity into Structured Data Pipelines</h3>
-          <p>Reflecting on over 5 years of IT experience as an Acting Lead and Business Analyst—how precise data attribution models and UAT validation prevent downstream pipeline failures.</p>
-          <div class="tech-tags">
-            <span class="tech-tag">Business Analysis</span>
-            <span class="tech-tag">Data Attribution</span>
-            <span class="tech-tag">UAT Testing</span>
+        <div class="card hero-card">
+          <h1 class="mono">Hello there, welcome to my corner.</h1>
+          <p>I’m Sreehari—born in Payyannur, Kerala, and currently making things happen in Bengaluru. By day, I immerse myself in data attribution workflows, systems logic, and problem-solving. By night, I love building AI apps from scratch, tinkering with Python, riding my motorbike, and diving into anime worlds.</p>
+          <p>This space is where I collect my thoughts, showcase digital craftsmanship, and share the tools I build out of pure curiosity.</p>
+          <div style="margin-top: 24px;">
+            <a class="btn-primary mono" onclick="switchPage('projects')">Explore My Work ➔</a>
           </div>
-          <a class="action-btn mono" onclick="switchPage('constellations')">View Constellations →</a>
-        </article>
+        </div>
 
-        <article class="space-card">
-          <div class="card-meta mono">LOG #02 • AUG 29, 2026</div>
-          <h3>Vibe Coding with FastAPI and LLM Orchestration</h3>
-          <p>Exploring how building rapid prototypes like Gibbon transforms how we approach software development, taking concepts from zero to live production in hours.</p>
-          <div class="tech-tags">
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">FastAPI</span>
-            <span class="tech-tag">AI Workflows</span>
-          </div>
-          <a class="action-btn mono" onclick="switchPage('constellations')">Explore App →</a>
-        </article>
+        <div class="card">
+          <div class="section-title mono">● Recent Focus & Thoughts</div>
+          <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Simplicity is the ultimate sophistication.</h3>
+          <p style="color: var(--muted); font-size: 0.92rem;">Whether untangling complex e-commerce attribution data or orchestrating LLMs with FastAPI, I believe the best engineering feels effortless to the end user.</p>
+        </div>
       </div>
 
-      <!-- Right Sidebar Profile (Displays at top on mobile) -->
+      <!-- Right Sidebar Profile Card -->
       <aside>
-        <div class="sidebar-card space-card" style="margin-bottom:0;">
-          <h4 class="mono">Sreehari // Acting Lead & SME</h4>
-          <p>Over 5 years of IT experience specializing in product data workflows, attribution integrity, and process automation at Infosys. Vibe coder and anime enthusiast by night.</p>
-          <div class="section-title" style="margin-bottom: 10px;">Comms Channel</div>
-          <ul class="connect-list mono">
-            <li><a href="https://www.linkedin.com/in/sreeharinp/" target="_blank">💼 LinkedIn Profile ↗</a></li>
-            <li><a href="http://github.com/Sreekuttan28" target="_blank">💻 GitHub Repository ↗</a></li>
-            <li><a href="https://sreekuttan28.github.io/Mokuttan-Lab/" target="_blank">🧪 Mokuttan Labs ↗</a></li>
-          </ul>
+        <div class="card" style="margin-bottom: 0;">
+          <h3 style="font-size: 1.2rem; margin-bottom: 8px;" class="mono">Sreehari</h3>
+          <p style="font-size: 0.88rem; color: var(--muted); margin-bottom: 20px;">Builder, data analyst, vibe-coder, and anime lover. Always curious about how things work under the hood.</p>
+          
+          <div class="section-title mono" style="margin-bottom: 10px;">Connect</div>
+          <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.88rem;">
+            <a href="https://www.linkedin.com/in/sreeharinp/" target="_blank" style="color: var(--text); text-decoration: none; font-weight: 500;">💼 LinkedIn Profile ↗</a>
+            <a href="http://github.com/Sreekuttan28" target="_blank" style="color: var(--text); text-decoration: none; font-weight: 500;">💻 GitHub Repository ↗</a>
+            <a href="https://sreekuttan28.github.io/Mokuttan-Lab/" target="_blank" style="color: var(--text); text-decoration: none; font-weight: 500;">🧪 Mokuttan Labs Hub ↗</a>
+          </div>
         </div>
       </aside>
     </div>
   </div>
 
-  <!-- PAGE 2: CONSTELLATIONS (Projects & Works) -->
-  <div id="page-constellations" class="page-view">
-    <div class="section-title">● Deployed Systems & Projects</div>
+  <!-- PROJECTS PAGE (Human-centric, Apple/Amazon/Samsung grade craftsmanship) -->
+  <div id="page-projects" class="page-view">
+    <div class="section-title mono">● Craftsmanship & Deployed Systems</div>
     
-    <div class="projects-grid" style="margin-bottom: 20px;">
-      <!-- Gibbon AI Assistant -->
-      <div class="space-card" style="margin-bottom:0;">
-        <div class="card-meta mono">FLAGSHIP AI APP</div>
-        <h3>Gibbon AI Assistant</h3>
-        <p>An intelligent assistant built with Python & FastAPI featuring LLM orchestration (Groq/Gemini), real-time web retrieval, and Edge-TTS voice generation.</p>
-        
-        <!-- Embedded Video Showcase -->
-        <div style="margin: 15px 0; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; background: #000;">
-          <div style="position: relative; width: 100%; padding-top: 56.25%;">
-            <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-              <source src="gibbon_video.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </div>
-
-        <div class="tech-tags">
-          <span class="tech-tag">FastAPI</span>
-          <span class="tech-tag">Python</span>
-          <span class="tech-tag">Groq/Gemini</span>
-          <span class="tech-tag">Edge-TTS</span>
-        </div>
-        <a href="https://gibbon-assistant.onrender.com/" target="_blank" class="action-btn mono">Launch Live App ↗</a>
-      </div>
-
-      <!-- Life Audiology Vatakara -->
-      <div class="space-card" style="margin-bottom:0;">
-        <div class="card-meta mono">DIGITAL LAUNCH & SEO</div>
-        <h3>Life Audiology Vatakara</h3>
-        <p>Led the digital launch, web development, and localized search engine optimization campaign for the 11th branch of Life Audiology And Speech Therapy Centre.</p>
-        <div class="tech-tags" style="margin-top: 25px;">
-          <span class="tech-tag">Web Dev</span>
-          <span class="tech-tag">Local SEO</span>
-          <span class="tech-tag">Brand Assets</span>
-        </div>
-        <div style="margin-top: 40px;">
-          <a href="https://lifeaudiologyvatakara.in" target="_blank" class="action-btn mono">Visit Live Site ↗</a>
+    <!-- Gibbon AI Assistant -->
+    <div class="project-showcase">
+      <div class="card-meta mono">FLAGSHIP AI ASSISTANT</div>
+      <h3>Gibbon AI Web App</h3>
+      <p>Gibbon was born from a simple desire: a lightning-fast, highly personalized AI assistant that combines intelligent LLM orchestration with real-time web retrieval and natural Edge-TTS voice generation. Designed with meticulous attention to detail, clean typography, and instant responsiveness.</p>
+      
+      <!-- Video Showcase -->
+      <div style="margin: 20px 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: #000;">
+        <div style="position: relative; width: 100%; padding-top: 56.25%;">
+          <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+            <source src="gibbon_video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
         </div>
       </div>
+
+      <div class="tech-pills">
+        <span class="tech-pill">Python</span>
+        <span class="tech-pill">FastAPI</span>
+        <span class="tech-pill">Groq / Gemini LLMs</span>
+        <span class="tech-pill">Edge-TTS Voice</span>
+      </div>
+      <a href="https://gibbon-assistant.onrender.com/" target="_blank" class="btn-primary mono">Test Live App ↗</a>
     </div>
 
-    <!-- Mokuttan Labs Hub -->
-    <div class="space-card">
-      <div class="card-meta mono">DEVELOPER INCUBATOR</div>
-      <h3>Mokuttan Labs Hub</h3>
-      <p>Personal developer hub and showcase container housing experimental Python utilities, automation pipelines, and localized web apps.</p>
-      <div class="tech-tags">
-        <span class="tech-tag">GitHub Pages</span>
-        <span class="tech-tag">Automation</span>
-        <span class="tech-tag">UI Design</span>
+    <!-- Life Audiology Vatakara -->
+    <div class="project-showcase">
+      <div class="card-meta mono">HEALTHCARE DIGITAL LAUNCH & SEO</div>
+      <h3>Life Audiology & Speech Therapy Centre</h3>
+      <p>Engineering a welcoming digital footprint for healthcare accessibility. Led the website launch, custom brand assets, and local search engine optimization campaign for their 11th branch in Vatakara, ensuring patients can easily find compassionate care.</p>
+      <div class="tech-pills">
+        <span class="tech-pill">Web Development</span>
+        <span class="tech-pill">Local SEO</span>
+        <span class="tech-pill">Brand Identity</span>
       </div>
-      <a href="https://sreekuttan28.github.io/Mokuttan-Lab/" target="_blank" class="action-btn mono">Explore Labs Hub ↗</a>
+      <a href="https://lifeaudiologyvatakara.in" target="_blank" class="btn-primary mono">Visit Live Site ↗</a>
+    </div>
+
+    <!-- Mokuttan Labs -->
+    <div class="project-showcase">
+      <div class="card-meta mono">CREATIVE DEVELOPER INCUBATOR</div>
+      <h3>Mokuttan Labs Hub</h3>
+      <p>A personal digital playground and showcase hub where experimental utilities, interactive UI components, and automation tools come to life under a unified developer brand.</p>
+      <div class="tech-pills">
+        <span class="tech-pill">GitHub Pages</span>
+        <span class="tech-pill">JavaScript / CSS</span>
+        <span class="tech-pill">Creative Code</span>
+      </div>
+      <a href="https://sreekuttan28.github.io/Mokuttan-Lab/" target="_blank" class="btn-primary mono">Explore Labs ↗</a>
     </div>
   </div>
 
-  <!-- PAGE 3: COORDINATES (About & Philosophy) -->
-  <div id="page-coordinates" class="page-view">
-    <div class="layout-grid">
+  <!-- ABOUT PAGE -->
+  <div id="page-about" class="page-view">
+    <div class="content-grid">
       <div>
-        <div class="section-title">● Navigation Coordinates & Background</div>
-        <article class="space-card">
-          <h3>Engineering Robust Data Workflows</h3>
-          <p style="margin-bottom: 14px;">With over 4 years of IT experience at Infosys as an Acting Lead and Subject Matter Expert, I specialize in managing complex product data attribution workflows, designing automated KNIME/Excel pipelines, and executing rigorous UAT cycles.</p>
-          <p>Beyond the enterprise workspace, I operate Mokuttan Labs—a creative incubator where I build AI web applications, experiment with audio synthesis, and blend clean technical architecture with anime-inspired companion elements.</p>
-        </article>
+        <div class="card">
+          <h3 style="font-size: 1.5rem; margin-bottom: 16px;" class="mono">Behind the Code</h3>
+          <p style="color: var(--muted); margin-bottom: 16px;">I grew up surrounded by the lush greenery of Payyannur, Kerala, and today I live and build out of Bengaluru. Over the past 5+ years in IT, I’ve learned that great software and data workflows aren't just about syntax—they are about empathy, clarity, and removing friction for humans.</p>
+          <p style="color: var(--muted); margin-bottom: 16px;">Whether I'm writing Python scripts, organizing data attribution pipelines, learning to play the ukulele, or cruising on my motorbike, I approach everything with genuine curiosity.</p>
+          <p style="color: var(--muted);">This website is my digital home—built with clean lines, warm colors, and a touch of anime-inspired life.</p>
+        </div>
       </div>
       <aside>
-        <div class="sidebar-card space-card" style="margin-bottom:0;">
-          <h4 class="mono">Technical Arsenal</h4>
-          <p>SQL, Python, FastAPI, KNIME, Advanced Excel, Power Query, GitHub Pages, and Vibe Coding frameworks.</p>
+        <div class="card" style="margin-bottom: 0;">
+          <h4 style="font-size: 1.1rem; margin-bottom: 12px;" class="mono">Core Toolkit</h4>
+          <p style="font-size: 0.88rem; color: var(--muted); margin-bottom: 16px;">Python, SQL, FastAPI, KNIME, Advanced Excel, Power Query, GitHub Pages, and Vibe Coding.</p>
         </div>
       </aside>
     </div>
   </div>
 </main>
 
-<!-- Advanced 3D-Styled Luffy Companion with 30-sec Inactivity Runner -->
+<!-- Advanced Animated 3D Luffy Companion with 30-sec Inactivity Runner -->
 <div class="luffy-corner">
-  <div class="speech-bubble mono" id="luffyBubble">Shishishi! Welcome aboard! 🍖</div>
+  <div class="speech-bubble mono" id="luffyBubble">Shishishi! Welcome to Sreehari's page! 🍖</div>
   <canvas id="luffyCanvas" width="130" height="150" style="cursor: pointer;" title="Click me!"></canvas>
 </div>
 
 <script>
-  // Page Switching with Smooth Transitions
+  // Live Date and Time Widget
+  function updateClock() {
+    const now = new Date();
+    const options = { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+    document.getElementById('liveClock').textContent = now.toLocaleDateString('en-US', options).toUpperCase() + " // BENGALURU, IN";
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+
+  // Page Switching Function
   function switchPage(pageId) {
     document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.subnav a').forEach(a => a.classList.remove('active'));
+    document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
     
     document.getElementById('page-' + pageId).classList.add('active');
     document.getElementById('nav-' + pageId).classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // Theme Toggle (Spaceship Dark vs Clean Light)
+  // Theme Toggle (Light Default vs Dark Starry Night)
   function toggleTheme() {
     const html = document.documentElement;
     const btn = document.getElementById('themeBtn');
-    if (html.getAttribute('data-theme') === 'dark') {
-      html.setAttribute('data-theme', 'light');
-      btn.textContent = '🌙 Dark';
-    } else {
+    if (html.getAttribute('data-theme') === 'light') {
       html.setAttribute('data-theme', 'dark');
-      btn.textContent = '☀️ Light';
+      btn.textContent = '☀️ Light Mode';
+    } else {
+      html.setAttribute('data-theme', 'light');
+      btn.textContent = '🌙 Dark Mode';
     }
   }
 
-  // Starfield Command Canvas Animation
+  // Starfield Canvas Animation
   const canvas = document.getElementById('starfieldCanvas');
   const ctx = canvas.getContext('2d');
   let stars = [];
@@ -477,7 +473,7 @@
   function drawStars() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    ctx.fillStyle = isDark ? '#ffffff' : '#0f172a';
+    ctx.fillStyle = isDark ? '#ffffff' : '#1c1917';
     stars.forEach(s => {
       s.alpha += s.speed;
       if (s.alpha > 1 || s.alpha < 0.2) s.speed = -s.speed;
@@ -540,7 +536,7 @@
     }
 
     // Shadow
-    lCtx.fillStyle = 'rgba(0,0,0,0.2)';
+    lCtx.fillStyle = 'rgba(0,0,0,0.15)';
     lCtx.beginPath();
     lCtx.ellipse(65, 142, 22, 6, 0, 0, Math.PI * 2);
     lCtx.fill();
