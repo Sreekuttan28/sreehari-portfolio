@@ -363,7 +363,7 @@
 <header>
   <div class="header-top mono">
     <span id="liveClock">LOADING... // BENGALURU, IN</span>
-    <span>SREEHARI.NET // V5.9</span>
+    <span>SREEHARI.NET // V6.0</span>
   </div>
   <div class="header-main">
     <a href="#" class="brand mono" onclick="switchPage('home')">Sreehari.net</a>
@@ -596,6 +596,20 @@
   const bannerCanvas = document.getElementById('bannerArtCanvas');
   const bCtx = bannerCanvas.getContext('2d');
 
+  // Helper function to draw a fluffy realistic cloud
+  function drawCloud(ctx, x, y, scale, alpha) {
+    ctx.save();
+    ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+    ctx.beginPath();
+    ctx.arc(x, y, 22 * scale, 0, Math.PI * 2);
+    ctx.arc(x + 18 * scale, y - 8 * scale, 18 * scale, 0, Math.PI * 2);
+    ctx.arc(x + 35 * scale, y + 2 * scale, 16 * scale, 0, Math.PI * 2);
+    ctx.arc(x + 16 * scale, y + 8 * scale, 15 * scale, 0, Math.PI * 2);
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
+  }
+
   function drawBannerArt() {
     bCtx.clearRect(0, 0, 1000, 220);
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
@@ -607,12 +621,9 @@
       bCtx.fillStyle = nightGrad;
       bCtx.fillRect(0, 0, 1000, 220);
 
-      // Cloud shadows floating across the sky
-      bCtx.fillStyle = 'rgba(255, 255, 255, 0.03)';
-      bCtx.beginPath();
-      bCtx.ellipse(250, 60, 90, 25, 0, 0, Math.PI * 2);
-      bCtx.ellipse(750, 45, 120, 30, 0, 0, Math.PI * 2);
-      bCtx.fill();
+      // Fluffy night nebula clouds
+      drawCloud(bCtx, 180, 45, 1.2, 0.12);
+      drawCloud(bCtx, 750, 40, 1.4, 0.15);
 
       bCtx.fillStyle = '#0f172a';
       bCtx.fillRect(0, 160, 1000, 60);
@@ -635,27 +646,23 @@
       bCtx.fillStyle = '#1e293b'; bCtx.fillRect(483, 130, 34, 25);
       bCtx.fillStyle = '#f8fafc'; bCtx.beginPath(); bCtx.arc(500, 118, 11, 0, Math.PI * 2); bCtx.fill();
 
-      // Dog and Cat sitting together on one side (Left)
-      // Dog (Golden/Brown blocky)
+      // Dog and Cat (Left)
       bCtx.fillStyle = '#d97706';
-      bCtx.fillRect(360, 140, 16, 18); // body
-      bCtx.fillRect(355, 132, 10, 12); // head
-      bCtx.fillRect(352, 130, 4, 6);   // ear
-      bCtx.fillRect(372, 148, 4, 10);  // leg
-      // Cat (Orange/Tabby blocky) sitting right next to dog
+      bCtx.fillRect(360, 140, 16, 18);
+      bCtx.fillRect(355, 132, 10, 12);
+      bCtx.fillRect(352, 130, 4, 6);
+      bCtx.fillRect(372, 148, 4, 10);
       bCtx.fillStyle = '#f97316';
-      bCtx.fillRect(385, 143, 12, 15); // body
-      bCtx.fillRect(382, 136, 8, 10);  // head
-      bCtx.fillRect(380, 133, 3, 4);   // left ear
-      bCtx.fillRect(388, 133, 3, 4);   // right ear
+      bCtx.fillRect(385, 143, 12, 15);
+      bCtx.fillRect(382, 136, 8, 10);
+      bCtx.fillRect(380, 133, 3, 4);
+      bCtx.fillRect(388, 133, 3, 4);
 
-      // Small indoor potted plant on the other side (Right)
-      bCtx.fillStyle = '#cbd5e1'; // pot
+      // Potted plant (Right)
+      bCtx.fillStyle = '#cbd5e1';
       bCtx.fillRect(605, 142, 16, 16);
-      bCtx.fillStyle = '#10b981'; // plant leaves
-      bCtx.beginPath();
-      bCtx.arc(613, 138, 14, 0, Math.PI * 2);
-      bCtx.fill();
+      bCtx.fillStyle = '#10b981';
+      bCtx.beginPath(); bCtx.arc(613, 138, 14, 0, Math.PI * 2); bCtx.fill();
 
     } else {
       const skyGrad = bCtx.createLinearGradient(0, 0, 0, 160);
@@ -665,12 +672,9 @@
       bCtx.fillStyle = skyGrad;
       bCtx.fillRect(0, 0, 1000, 220);
 
-      // Soft Cloud shadows floating across the light sky
-      bCtx.fillStyle = 'rgba(255, 255, 255, 0.45)';
-      bCtx.beginPath();
-      bCtx.ellipse(280, 50, 100, 25, 0, 0, Math.PI * 2);
-      bCtx.ellipse(720, 65, 130, 30, 0, 0, Math.PI * 2);
-      bCtx.fill();
+      // Fluffy realistic clouds
+      drawCloud(bCtx, 170, 40, 1.3, 0.75);
+      drawCloud(bCtx, 720, 35, 1.5, 0.8);
 
       bCtx.fillStyle = '#cbd5e1';
       bCtx.fillRect(0, 160, 1000, 60);
@@ -693,27 +697,32 @@
       bCtx.fillStyle = '#0284c7'; bCtx.fillRect(483, 130, 34, 25);
       bCtx.fillStyle = '#1c1917'; bCtx.beginPath(); bCtx.arc(500, 118, 11, 0, Math.PI * 2); bCtx.fill();
 
-      // Dog and Cat sitting together on one side (Left)
+      // Dog and Cat (Left)
       bCtx.fillStyle = '#b45309';
       bCtx.fillRect(360, 140, 16, 18);
       bCtx.fillRect(355, 132, 10, 12);
       bCtx.fillRect(352, 130, 4, 6);
       bCtx.fillRect(372, 148, 4, 10);
-
       bCtx.fillStyle = '#ea580c';
       bCtx.fillRect(385, 143, 12, 15);
       bCtx.fillRect(382, 136, 8, 10);
       bCtx.fillRect(380, 133, 3, 4);
       bCtx.fillRect(388, 133, 3, 4);
 
-      // Small indoor potted plant on the other side (Right)
-      bCtx.fillStyle = '#94a3b8'; // pot
+      // Potted plant (Right)
+      bCtx.fillStyle = '#94a3b8';
       bCtx.fillRect(605, 142, 16, 16);
-      bCtx.fillStyle = '#059669'; // plant leaves
-      bCtx.beginPath();
-      bCtx.arc(613, 138, 14, 0, Math.PI * 2);
-      bCtx.fill();
+      bCtx.fillStyle = '#059669';
+      bCtx.beginPath(); bCtx.arc(613, 138, 14, 0, Math.PI * 2); bCtx.fill();
     }
+
+    // Top-Right Interesting Callout Text
+    bCtx.save();
+    bCtx.font = '12px "DM Mono", monospace';
+    bCtx.fillStyle = isDark ? '#38bdf8' : '#b45309';
+    bCtx.textAlign = 'right';
+    bCtx.fillText('// 12.9716° N, 77.5946° E (BLR ROOFTOP LAB)', 975, 28);
+    bCtx.restore();
   }
 
   drawBannerArt();
@@ -834,8 +843,7 @@
   }
   drawMinecraftLuffy();
 
-  luffyCompanyContainer = document.getElementById('luffyContainer');
-  luffyCompanyContainer.addEventListener('click', (e) => {
+  luffyContainer.addEventListener('click', (e) => {
     e.stopPropagation();
     clickCount++;
     resetInactivity();
