@@ -17,7 +17,7 @@
     --border: #E7E5E4;
     --accent: #D97706;
     --accent-glow: rgba(217, 119, 6, 0.1);
-    --nav-bg: rgba(249, 246, 238, 0.9);
+    --nav-bg: #F9F6EE; /* Solid header background color for light mode */
   }
 
   [data-theme="dark"] {
@@ -28,7 +28,7 @@
     --border: #1E293B;
     --accent: #38BDF8;
     --accent-glow: rgba(56, 189, 248, 0.15);
-    --nav-bg: rgba(7, 9, 14, 0.9);
+    --nav-bg: #07090E; /* Solid header background color for dark mode */
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -62,9 +62,9 @@
     top: 0;
     z-index: 100;
     background: var(--nav-bg);
-    backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
     padding: 16px 24px;
+    transition: background 0.4s ease, border-color 0.4s ease;
   }
 
   .header-top {
@@ -129,11 +129,12 @@
   }
   .theme-btn:hover { border-color: var(--accent); }
 
-  /* Dynamic Banner Container (Rooftop Art with Theme-aware styling & title overlay) */
+  /* Dynamic Banner Container */
   .banner-container {
     max-width: 1000px;
     margin: 30px auto 0 auto;
     padding: 0 20px;
+    position: relative;
   }
 
   .banner-frame {
@@ -146,6 +147,24 @@
     box-shadow: 0 4px 20px rgba(0,0,0,0.05);
     position: relative;
     transition: background 0.4s ease, border-color 0.4s ease;
+  }
+
+  /* Atmospheric Lighting Glow behind the banner */
+  .banner-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 120px;
+    background: radial-gradient(ellipse at center, rgba(217, 119, 6, 0.2) 0%, rgba(0,0,0,0) 70%);
+    filter: blur(30px);
+    z-index: -1;
+    pointer-events: none;
+    transition: background 0.4s ease;
+  }
+  [data-theme="dark"] .banner-glow {
+    background: radial-gradient(ellipse at center, rgba(56, 189, 248, 0.25) 0%, rgba(0,0,0,0) 70%);
   }
 
   .banner-title-overlay {
@@ -337,7 +356,7 @@
 <header>
   <div class="header-top mono">
     <span id="liveClock">LOADING... // BENGALURU, IN</span>
-    <span>SREEHARI.NET // V5.6</span>
+    <span>SREEHARI.NET // V5.7</span>
   </div>
   <div class="header-main">
     <a href="#" class="brand mono" onclick="switchPage('home')">Sreehari.net</a>
@@ -350,8 +369,9 @@
   </div>
 </header>
 
-<!-- Dynamic Rooftop Banner with Sreehari.net overlay & theme-aware art -->
+<!-- Dynamic Rooftop Banner with Ambient Atmospheric Lighting & Sreehari.net overlay -->
 <div class="banner-container">
+  <div class="banner-glow"></div>
   <div class="banner-frame">
     <div class="banner-title-overlay">Sreehari.net</div>
     <canvas id="bannerArtCanvas" width="1000" height="220" style="width: 100%; height: 100%; display: block;"></canvas>
@@ -559,7 +579,7 @@
   resizeCanvas();
   drawStars();
 
-  // Dynamic Theme-Aware Banner Art (Rooftop 3 Monitors / Cyber Deck)
+  // Dynamic Theme-Aware Banner Art with Ambient Glow
   const bannerCanvas = document.getElementById('bannerArtCanvas');
   const bCtx = bannerCanvas.getContext('2d');
 
@@ -575,12 +595,6 @@
       bCtx.fillStyle = nightGrad;
       bCtx.fillRect(0, 0, 1000, 220);
 
-      // Distant stars/grid lines in banner
-      bCtx.fillStyle = 'rgba(56, 189, 248, 0.15);';
-      bCtx.fillRect(50, 40, 2, 2);
-      bCtx.fillRect(200, 60, 2, 2);
-      bCtx.fillRect(850, 50, 2, 2);
-
       // Rooftop floor
       bCtx.fillStyle = '#0f172a';
       bCtx.fillRect(0, 160, 1000, 60);
@@ -592,25 +606,19 @@
       bCtx.fillRect(430, 130, 140, 8);
 
       // 3 Monitors with Cyber Glow
-      bCtx.fillStyle = '#0f172a';
-      bCtx.fillRect(435, 95, 36, 32);
+      bCtx.fillStyle = '#0f172a'; bCtx.fillRect(435, 95, 36, 32);
       bCtx.fillStyle = '#38bdf8'; bCtx.fillRect(437, 97, 32, 26);
 
-      bCtx.fillStyle = '#0f172a';
-      bCtx.fillRect(475, 85, 50, 42);
+      bCtx.fillStyle = '#0f172a'; bCtx.fillRect(475, 85, 50, 42);
       bCtx.fillStyle = '#38bdf8'; bCtx.fillRect(477, 87, 46, 36);
 
-      bCtx.fillStyle = '#0f172a';
-      bCtx.fillRect(529, 95, 36, 32);
+      bCtx.fillStyle = '#0f172a'; bCtx.fillRect(529, 95, 36, 32);
       bCtx.fillStyle = '#34d399'; bCtx.fillRect(531, 97, 32, 26);
 
       // Person vibing
-      bCtx.fillStyle = '#38bdf8';
-      bCtx.fillRect(485, 120, 30, 25);
-      bCtx.fillStyle = '#1e293b';
-      bCtx.fillRect(483, 130, 34, 25);
-      bCtx.fillStyle = '#f8fafc';
-      bCtx.beginPath(); bCtx.arc(500, 118, 11, 0, Math.PI * 2); bCtx.fill();
+      bCtx.fillStyle = '#38bdf8'; bCtx.fillRect(485, 120, 30, 25);
+      bCtx.fillStyle = '#1e293b'; bCtx.fillRect(483, 130, 34, 25);
+      bCtx.fillStyle = '#f8fafc'; bCtx.beginPath(); bCtx.arc(500, 118, 11, 0, Math.PI * 2); bCtx.fill();
 
     } else {
       // Light Mode Watercolor Rooftop
