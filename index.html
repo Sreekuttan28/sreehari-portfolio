@@ -3,34 +3,33 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sreehari — Systems, Analytics & Vibe Coding</title>
-<meta name="description" content="Personal site of Sreehari. 5+ years in IT, data attribution workflows, vibe coding, and creative experiments.">
+<title>Sreehari.net — Thoughts on Data, AI, Systems, and Vibe Coding.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #EBDDB0;
-    --text: #1a1a1a;
-    --muted: #5a533f;
-    --accent: #b45309;
-    --card-bg: #f5edd6;
-    --border: #d4c497;
-    --nav-bg: rgba(235, 221, 176, 0.85);
+    --bg: #f7f3ec;
+    --card-bg: #fffbf5;
+    --text: #2c2825;
+    --muted: #78716c;
+    --border: #e6dfd5;
+    --accent: #9a3412;
+    --nav-bg: rgba(247, 243, 236, 0.9);
   }
 
   [data-theme="dark"] {
-    --bg: #0b0f19;
-    --text: #e2e8f0;
-    --muted: #94a3b8;
+    --bg: #0f141c;
+    --card-bg: #161d29;
+    --text: #f3f4f6;
+    --muted: #9ca3af;
+    --border: #263147;
     --accent: #38bdf8;
-    --card-bg: #111827;
-    --border: #1e293b;
-    --nav-bg: rgba(11, 15, 25, 0.85);
+    --nav-bg: rgba(15, 20, 28, 0.9);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  
+
   body {
     background-color: var(--bg);
     color: var(--text);
@@ -40,254 +39,336 @@
     overflow-x: hidden;
   }
 
-  .mono {
-    font-family: 'DM Mono', monospace;
-  }
+  .serif { font-family: 'Newsreader', serif; }
 
-  /* Starry Night Canvas Background for Dark Mode */
+  /* Starry background for dark mode */
   #starryCanvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.5s ease;
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    pointer-events: none; z-index: -1; opacity: 0; transition: opacity 0.5s ease;
   }
-  [data-theme="dark"] #starryCanvas {
-    opacity: 1;
-  }
+  [data-theme="dark"] #starryCanvas { opacity: 1; }
 
-  /* Navigation Bar */
-  header.nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
-    background: var(--nav-bg);
-    backdrop-filter: blur(10px);
+  /* Header & Aesthetic Navigation */
+  header {
+    text-align: center;
+    padding: 60px 20px 30px 20px;
     border-bottom: 1px solid var(--border);
-    z-index: 100;
+    background: var(--bg);
   }
 
-  .brand {
-    font-weight: 700;
-    font-size: 1.1rem;
-    color: var(--text);
+  header h1 {
+    font-family: 'Newsreader', serif;
+    font-size: 3rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  header p {
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    color: var(--muted);
+    font-size: 1.15rem;
+    margin-bottom: 24px;
+  }
+
+  .subnav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .subnav a {
+    color: var(--muted);
     text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .subnav a:hover, .subnav a.active { color: var(--accent); }
+
+  .theme-switch {
+    background: none; border: 1px solid var(--border); color: var(--text);
+    padding: 4px 10px; border-radius: 12px; cursor: pointer; font-size: 0.75rem;
   }
 
-  .nav-controls {
-    display: flex;
-    gap: 20px;
-    align-items: center;
+  /* Main Container & Page Views */
+  main {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 40px 20px 100px 20px;
   }
 
-  .theme-toggle {
+  .page-view {
+    display: none;
+    animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .page-view.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Grid Layout: Left Column Feed, Right Column Bio Card */
+  .layout-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 30px;
+    align-items: start;
+  }
+
+  @media(max-width: 850px) {
+    .layout-grid { grid-template-columns: 1fr; }
+  }
+
+  .section-title {
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+
+  /* Cards */
+  .content-card {
     background: var(--card-bg);
     border: 1px solid var(--border);
-    color: var(--text);
-    padding: 6px 14px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 0.85rem;
-    transition: all 0.2s ease;
+    padding: 28px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
   }
-  .theme-toggle:hover {
+  .content-card:hover {
     border-color: var(--accent);
   }
 
-  /* Main Container */
-  main {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 140px 24px 80px 24px;
-  }
-
-  /* Hero / Intro Section */
-  .hero {
-    margin-bottom: 80px;
-  }
-
-  .hero h1 {
-    font-size: 2.8rem;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    margin-bottom: 20px;
-  }
-
-  .hero p {
-    font-size: 1.15rem;
+  .content-meta {
+    font-size: 0.8rem;
     color: var(--muted);
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+
+  .content-card h3 {
+    font-family: 'Newsreader', serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+
+  .content-card p {
+    color: var(--muted);
+    font-size: 0.95rem;
     margin-bottom: 16px;
   }
 
-  /* Section Styles */
-  section {
-    margin-bottom: 60px;
+  .read-more {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
   }
+  .read-more:hover { color: var(--accent); }
 
-  section h2 {
-    font-size: 1.3rem;
-    margin-bottom: 20px;
-    font-weight: 700;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 8px;
-  }
-
-  .grid-cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-
-  @media(max-width: 650px) {
-    .grid-cards { grid-template-columns: 1fr; }
-    header.nav { padding: 15px 20px; }
-  }
-
-  .card {
+  /* Right Sidebar Bio Widget */
+  .sidebar-card {
     background: var(--card-bg);
     border: 1px solid var(--border);
     padding: 24px;
     border-radius: 12px;
-    text-decoration: none;
-    color: var(--text);
-    transition: transform 0.2s ease, border-color 0.2s ease;
-  }
-  .card:hover {
-    transform: translateY(-3px);
-    border-color: var(--accent);
-  }
-  .card h3 {
-    font-size: 1.1rem;
-    margin-bottom: 8px;
-  }
-  .card p {
-    font-size: 0.9rem;
-    color: var(--muted);
   }
 
-  /* Interactive Minecraft-styled Luffy Canvas & Greeting Bubble */
-  .luffy-container {
+  .sidebar-card h4 {
+    font-family: 'Newsreader', serif;
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+  }
+
+  .sidebar-card p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  .connect-links {
+    list-style: none;
+  }
+  .connect-links li {
+    margin-bottom: 8px;
+  }
+  .connect-links a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .connect-links a:hover { color: var(--accent); }
+
+  /* Animated 3D/Canvas Advanced Gomu Gomu Luffy Companion */
+  .luffy-corner {
     position: fixed;
     bottom: 20px;
     right: 30px;
-    z-index: 99;
+    z-index: 999;
+    pointer-events: none;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    pointer-events: none;
   }
 
-  .luffy-speech {
+  .speech-bubble {
     background: var(--card-bg);
-    border: 2px solid var(--border);
+    border: 1px solid var(--border);
     padding: 10px 16px;
     border-radius: 12px;
     font-size: 0.85rem;
     margin-bottom: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     opacity: 0;
     transform: translateY(10px);
     transition: opacity 0.3s ease, transform 0.3s ease;
     pointer-events: auto;
+    font-family: 'Newsreader', serif;
+    font-style: italic;
   }
-  .luffy-speech.show {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .speech-bubble.visible { opacity: 1; transform: translateY(0); }
 
-  /* Footer */
-  footer {
-    text-align: center;
-    padding: 40px 0;
-    font-size: 0.85rem;
-    color: var(--muted);
-    border-top: 1px solid var(--border);
-    margin-top: 80px;
+  /* Projects Grid View */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
   }
+  @media(max-width: 700px) { .projects-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
 
 <canvas id="starryCanvas"></canvas>
 
-<header class="nav">
-  <a class="brand mono" href="#">⚡ /SREEHARI</a>
-  <div class="nav-controls">
-    <button class="theme-toggle mono" id="themeBtn" onclick="toggleTheme()">🌙 Night Sky</button>
-  </div>
+<!-- Top Aesthetic Title & Navigation -->
+<header>
+  <h1>Sreehari.net</h1>
+  <p>Thoughts on data systems, AI workflows, vibe coding, and anime.</p>
+  
+  <nav class="subnav">
+    <a onclick="switchPage('feed')" id="nav-feed" class="active">Archive</a>
+    <a onclick="switchPage('projects')" id="nav-projects">Projects</a>
+    <a onclick="switchPage('about')" id="nav-about">About</a>
+    <button class="theme-switch" onclick="toggleTheme()" id="themeBtn">🌙 Night</button>
+  </nav>
 </header>
 
 <main>
-  <!-- Intro Section -->
-  <section class="hero">
-    <h1 class="mono">Hi, I'm Sreehari.</h1>
-    <p>I'm an Acting Lead & Business Analyst with over 5 years of experience in IT, specializing in product data workflows, attribution integrity, and automation.</p>
-    <p>Outside of professional data systems, I spend my free time vibe-coding custom AI apps, building experiments, and geeking out over anime.</p>
-  </section>
+  <!-- PAGE 1: FEED / ARCHIVE -->
+  <div id="page-feed" class="page-view active">
+    <div class="layout-grid">
+      <div>
+        <div class="section-title">● Latest Posts & Essays</div>
+        
+        <article class="content-card">
+          <div class="content-meta">Sep 18, 2026 • 5 Min Read</div>
+          <h3>Translating Complex Business Ambiguity into Structured Data Pipelines</h3>
+          <p>Reflecting on over 5 years of IT experience as an Acting Lead and Business Analyst—how clear data attribution models prevent downstream catastrophes.</p>
+          <a class="read-more" onclick="switchPage('projects')">Explore Work →</a>
+        </article>
 
-  <!-- Projects / Works -->
-  <section>
-    <h2 class="mono">01 / SELECTED WORKS</h2>
-    <div class="grid-cards">
-      <a href="https://gibbon-assistant.onrender.com/" target="_blank" class="card">
-        <h3 class="mono">Gibbon AI Assistant ↗</h3>
-        <p>Custom Python & FastAPI web app featuring LLM orchestration, live web retrieval, and Edge-TTS voice generation.</p>
-      </a>
-      <a href="https://sreekuttan28.github.io/Mokuttan-Lab/" target="_blank" class="card">
-        <h3 class="mono">Mokuttan Labs ↗</h3>
-        <p>A personal incubator and developer hub housing creative web experiments and custom automation utilities.</p>
-      </a>
-    </div>
-  </section>
+        <article class="content-card">
+          <div class="content-meta">Aug 29, 2026 • 4 Min Read</div>
+          <h3>Vibe Coding with FastAPI and LLMs</h3>
+          <p>Why building rapid prototypes like Gibbon changes how we look at software development, transforming ideas into live products in hours.</p>
+          <a class="read-more" onclick="switchPage('projects')">Read More →</a>
+        </article>
+      </div>
 
-  <!-- Writings & Thoughts -->
-  <section>
-    <h2 class="mono">02 / WRITINGS & THOUGHTS</h2>
-    <div class="card" style="margin-bottom: 12px;">
-      <h3 class="mono">Bridging Business & Code</h3>
-      <p>Reflections on translating complex stakeholder requirements into structured data pipelines and robust UAT workflows.</p>
+      <!-- Right Sidebar Profile Card -->
+      <aside>
+        <div class="sidebar-card">
+          <h4>Hi there!</h4>
+          <p>Welcome to my corner of the internet. I'm Sreehari, an Acting Lead & Business Analyst living in Bengaluru, building data workflows by day and vibe-coding AI apps by night.</p>
+          <div class="section-title" style="margin-bottom: 10px;">Connect</div>
+          <ul class="connect-links">
+            <li><a href="https://www.linkedin.com/in/sreeharinp/" target="_blank">💼 LinkedIn Profile</a></li>
+            <li><a href="http://github.com/Sreekuttan28" target="_blank">💻 GitHub Repository</a></li>
+            <li><a href="https://sreekuttan28.github.io/Mokuttan-Lab/" target="_blank">🧪 Mokuttan Labs</a></li>
+          </ul>
+        </div>
+      </aside>
     </div>
-    <div class="card">
-      <h3 class="mono">Vibe Coding with Python</h3>
-      <p>Exploring how lightweight AI frameworks empower rapid prototyping and custom personal developer tools.</p>
-    </div>
-  </section>
+  </div>
 
-  <!-- Connect -->
-  <section>
-    <h2 class="mono">03 / CONNECT</h2>
-    <p style="color: var(--muted); margin-bottom: 16px;">Always open to discussing data systems, tech builds, or favorite anime series.</p>
-    <div style="display: flex; gap: 16px;">
-      <a href="https://www.linkedin.com/in/sreeharinp/" target="_blank" class="mono" style="color: var(--accent); text-decoration: none;">LinkedIn ↗</a>
-      <a href="http://github.com/Sreekuttan28" target="_blank" class="mono" style="color: var(--accent); text-decoration: none;">GitHub ↗</a>
+  <!-- PAGE 2: PROJECTS / WORKS -->
+  <div id="page-projects" class="page-view">
+    <div class="section-title">● Selected Works & Systems</div>
+    <div class="projects-grid">
+      <div class="content-card">
+        <div class="content-meta">Flagship AI App</div>
+        <h3>Gibbon AI Assistant</h3>
+        <p>Built using Python, FastAPI, and Groq/Gemini orchestration with real-time web retrieval and Edge-TTS voice generation.</p>
+        <a href="https://gibbon-assistant.onrender.com/" target="_blank" class="read-more">Launch Live App ↗</a>
+      </div>
+
+      <div class="content-card">
+        <div class="content-meta">Developer Incubator</div>
+        <h3>Mokuttan Labs Hub</h3>
+        <p>Personal developer hub and showcase container for experimental web tools, localized SEO builds, and automated data scripts.</p>
+        <a href="https://sreekuttan28.github.io/Mokuttan-Lab/" target="_blank" class="read-more">Visit Labs ↗</a>
+      </div>
     </div>
-  </section>
+  </div>
+
+  <!-- PAGE 3: ABOUT -->
+  <div id="page-about" class="page-view">
+    <div class="layout-grid">
+      <div>
+        <div class="section-title">● Background & Philosophy</div>
+        <article class="content-card">
+          <h3>Systems, Analytics, and Creative Energy</h3>
+          <p style="margin-bottom: 14px;">I have spent over 5 years working in IT environments, managing product data attribution, leading UAT validation cycles, and bridging communication gaps between business stakeholders and technical execution teams.</p>
+          <p>In my personal time, I love experimenting with code architectures, designing digital assets, and diving deep into anime worlds. This site serves as my digital garden for thoughts and code.</p>
+        </article>
+      </div>
+      <aside>
+        <div class="sidebar-card">
+          <h4>Core Toolkit</h4>
+          <p>Python, FastAPI, SQL, KNIME, Advanced Excel, Power Query, GitHub Pages, and Vibe Coding workflows.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
 </main>
 
-<!-- Minecraft-styled Luffy Companion Container -->
-<div class="luffy-companion">
-  <div class="luffy-speech mono" id="luffyBubble">Shishishi! Welcome to Sreehari's page! 🍖</div>
-  <canvas id="minecraftLuffy" width="90" height="110" style="image-rendering: pixelated; cursor: pointer;" title="Click me for meat!"></canvas>
+<!-- Advanced Animated 3D/Canvas Gomu Gomu Luffy Companion -->
+<div class="luffy-corner">
+  <div class="speech-bubble" id="luffyBubble">Shishishi! Welcome to Sreehari's world! 🍖</div>
+  <canvas id="luffyCanvas" width="130" height="150" style="cursor: pointer;" title="Click me!"></canvas>
 </div>
 
-<footer>
-  <p class="mono">SREEHARI — BUILT WITH VIBE CODING © 2026</p>
-</footer>
-
 <script>
-  // Theme Toggle Function
+  // Page Switching with Smooth Transitions
+  function switchPage(pageId) {
+    document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.subnav a').forEach(a => a.classList.remove('active'));
+    
+    document.getElementById('page-' + pageId).classList.add('active');
+    document.getElementById('nav-' + pageId).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Theme Toggle (Parchment vs Starry Night)
   function toggleTheme() {
     const html = document.documentElement;
     const btn = document.getElementById('themeBtn');
@@ -296,11 +377,11 @@
       btn.textContent = '☀️ Parchment';
     } else {
       html.setAttribute('data-theme', 'normal');
-      btn.textContent = '🌙 Night Sky';
+      btn.textContent = '🌙 Night';
     }
   }
 
-  // Starry Night Background Animation
+  // Starry Background Canvas Animation
   const canvas = document.getElementById('starryCanvas');
   const ctx = canvas.getContext('2d');
   let stars = [];
@@ -308,17 +389,13 @@
   function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    initStars();
-  }
-
-  function initStars() {
     stars = [];
-    const count = Math.floor((canvas.width * canvas.height) / 8000);
+    const count = Math.floor((canvas.width * canvas.height) / 9000);
     for (let i = 0; i < count; i++) {
       stars.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        radius: Math.random() * 1.5 + 0.5,
+        r: Math.random() * 1.5 + 0.5,
         alpha: Math.random(),
         speed: Math.random() * 0.02 + 0.005
       });
@@ -328,12 +405,12 @@
   function drawStars() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = '#ffffff';
-    stars.forEach(star => {
-      star.alpha += star.speed;
-      if (star.alpha > 1 || star.alpha < 0.2) star.speed = -star.speed;
-      ctx.globalAlpha = star.alpha;
+    stars.forEach(s => {
+      s.alpha += s.speed;
+      if (s.alpha > 1 || s.alpha < 0.2) s.speed = -s.speed;
+      ctx.globalAlpha = s.alpha;
       ctx.beginPath();
-      ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
       ctx.fill();
     });
     requestAnimationFrame(drawStars);
@@ -343,77 +420,145 @@
   resizeCanvas();
   drawStars();
 
-  // Minecraft-styled Pixel Luffy Animation & Interaction
-  const luffyCanvas = document.getElementById('minecraftLuffy');
-  const lctx = luffyCanvas.getContext('2d');
+  // Advanced Luffy Canvas Animation & 30-sec Inactivity Runner
+  const lCanvas = document.getElementById('luffyCanvas');
+  const lCtx = lCanvas.getContext('2d');
   const bubble = document.getElementById('luffyBubble');
-  
-  let frame = 0;
+
+  let tick = 0;
   let hasMeat = false;
+  let isRunning = false;
+  let runOffset = 0;
+  let inactivityTimer;
 
-  function drawMinecraftLuffy() {
-    lctx.clearRect(0, 0, 90, 110);
-    
-    // Simple blocky/pixelated Minecraft style drawing
-    // Head (Skin)
-    lctx.fillStyle = '#fde047';
-    lctx.fillRect(30, 25, 30, 26);
-    
-    // Straw Hat (Brim)
-    lctx.fillStyle = '#fbbf24';
-    lctx.fillRect(15, 20, 60, 8);
-    // Hat Top
-    lctx.fillRect(30, 8, 30, 13);
-    // Hat Ribbon
-    lctx.fillStyle = '#dc2626';
-    lctx.fillRect(30, 16, 30, 5);
+  function resetInactivity() {
+    clearTimeout(inactivityTimer);
+    inactivityTimer = setTimeout(() => {
+      triggerLuffyRun();
+    }, 30000); // 30 seconds idle triggers run
+  }
 
-    // Red Vest
-    lctx.fillStyle = '#ef4444';
-    lctx.fillRect(30, 53, 30, 32);
-    // Blue Shorts
-    lctx.fillStyle = '#2563eb';
-    lctx.fillRect(34, 82, 22, 12);
+  window.addEventListener('mousemove', resetInactivity);
+  window.addEventListener('scroll', resetInactivity);
+  window.addEventListener('click', resetInactivity);
+  resetInactivity();
 
-    // Blocky Legs with walking offset
-    lctx.fillStyle = '#fde047';
-    let legOffset = Math.sin(frame * 0.15) * 4;
-    lctx.fillRect(36, 94 + legOffset, 6, 12);
-    lctx.fillRect(48, 94 - legOffset, 6, 12);
+  function triggerLuffyRun() {
+    if (isRunning) return;
+    isRunning = true;
+    runOffset = -250;
+    bubble.textContent = "Gomu Gomu no Dash! 🏃‍♂️";
+    bubble.classList.add('visible');
+    setTimeout(() => {
+      bubble.classList.remove('visible');
+      isRunning = false;
+      runOffset = 0;
+    }, 4000);
+  }
 
-    // Arms
-    lctx.fillRect(18, 56, 10, 24);
-    if (hasMeat) {
-      lctx.fillRect(62, 45, 10, 24);
-      // Meat item
-      lctx.fillStyle = '#f8fafc';
-      lctx.fillRect(72, 40, 12, 8);
-      lctx.fillStyle = '#991b1b';
-      lctx.fillRect(74, 42, 8, 4);
-    } else {
-      lctx.fillRect(62, 56, 10, 24);
+  function drawLuffy() {
+    lCtx.clearRect(0, 0, 130, 150);
+    lCtx.save();
+
+    if (isRunning) {
+      runOffset += 4;
+      if (runOffset > 0) runOffset = 0;
+      lCtx.translate(runOffset, Math.sin(tick * 0.5) * 5);
     }
 
-    frame++;
-    requestAnimationFrame(drawMinecraftLuffy);
-  }
-  drawMinecraftLuffy();
+    // Shadow
+    lCtx.fillStyle = 'rgba(0,0,0,0.15)';
+    lCtx.beginPath();
+    lCtx.ellipse(65, 142, 22, 6, 0, 0, Math.PI * 2);
+    lCtx.fill();
 
-  // Click interaction for Luffy greeting & meat
-  luffyCanvas.addEventListener('click', () => {
+    // Legs & Shoes with running motion
+    lCtx.fillStyle = '#fde047';
+    let legSwing = isRunning ? Math.sin(tick * 0.4) * 10 : Math.sin(tick * 0.1) * 2;
+    // Left leg
+    lCtx.fillRect(52, 110 + legSwing, 8, 25);
+    lCtx.fillStyle = '#1e293b';
+    lCtx.fillRect(50, 132 + legSwing, 12, 6);
+    // Right leg
+    lCtx.fillStyle = '#fde047';
+    lCtx.fillRect(70, 110 - legSwing, 8, 25);
+    lCtx.fillStyle = '#1e293b';
+    lCtx.fillRect(68, 132 - legSwing, 12, 6);
+
+    // Blue Denim Shorts
+    lCtx.fillStyle = '#2563eb';
+    lCtx.fillRect(48, 100, 34, 15);
+    lCtx.fillStyle = '#ca8a04';
+    lCtx.fillRect(48, 97, 34, 4);
+
+    // Red Vest
+    lCtx.fillStyle = '#dc2626';
+    lCtx.beginPath();
+    lCtx.moveTo(42, 65); lCtx.lineTo(88, 65); lCtx.lineTo(82, 102); lCtx.fill();
+    lCtx.fillStyle = '#f87171';
+    lCtx.fillRect(46, 68, 38, 30);
+    // Chest opening
+    lCtx.fillStyle = '#0f172a';
+    lCtx.beginPath(); lCtx.moveTo(60, 68); lCtx.lineTo(65, 88); lCtx.lineTo(70, 68); lCtx.fill();
+
+    // Arms
+    lCtx.fillStyle = '#fde047';
+    let armSwing = isRunning ? Math.sin(tick * 0.4) * 12 : 0;
+    lCtx.fillRect(32, 70 + armSwing, 12, 32); // Left arm
+    lCtx.fillRect(86, 70 - armSwing, 12, 32); // Right arm
+
+    if (hasMeat) {
+      lCtx.fillStyle = '#f8fafc';
+      lCtx.beginPath(); lCtx.ellipse(105, 60, 12, 8, 0, 0, Math.PI*2); lCtx.fill();
+      lCtx.fillStyle = '#991b1b';
+      lCtx.fillRect(100, 56, 8, 8);
+    }
+
+    // Human-like Defined Head
+    lCtx.fillStyle = '#0f172a'; // Hair
+    lCtx.beginPath(); lCtx.arc(65, 48, 24, Math.PI, 0, false); lCtx.fill();
+
+    lCtx.fillStyle = '#fde047'; // Face Skin
+    lCtx.beginPath(); lCtx.arc(65, 52, 21, 0, Math.PI * 2); lCtx.fill();
+
+    // Facial Features (Eyes, Scar, Smile)
+    lCtx.fillStyle = '#0f172a';
+    lCtx.fillRect(55, 48, 4, 6); // Left eye
+    lCtx.fillRect(71, 48, 4, 6); // Right eye
+    
+    // Scar under left eye
+    lCtx.strokeStyle = '#dc2626'; lCtx.lineWidth = 2;
+    lCtx.beginPath(); lCtx.moveTo(52, 58); lCtx.lineTo(58, 64); lCtx.stroke();
+
+    // Smile
+    lCtx.strokeStyle = '#0f172a'; lCtx.lineWidth = 2.5;
+    lCtx.beginPath(); lCtx.arc(65, 54, 8, 0, Math.PI, false); lCtx.stroke();
+
+    // Straw Hat
+    lCtx.fillStyle = '#d97706';
+    lCtx.beginPath(); lCtx.ellipse(65, 32, 38, 10, 0, 0, Math.PI * 2); lCtx.fill();
+    lCtx.fillStyle = '#f59e0b';
+    lCtx.beginPath(); lCtx.arc(65, 22, 22, Math.PI, 0, false); lCtx.fill();
+    lCtx.fillStyle = '#dc2626'; // Ribbon
+    lCtx.fillRect(43, 22, 44, 6);
+
+    lCtx.restore();
+    tick++;
+    requestAnimationFrame(drawLuffy);
+  }
+  drawLuffy();
+
+  lCanvas.addEventListener('click', () => {
     hasMeat = !hasMeat;
-    bubble.textContent = hasMeat ? "Shishishi! MEAT!! 🍖" : "Sreehari builds awesome data tools! ⚡";
-    bubble.classList.add('show');
-    setTimeout(() => {
-      bubble.classList.remove('show');
-    }, 3000);
+    bubble.textContent = hasMeat ? "Shishishi! MEAT!! 🍖" : "Sreehari builds awesome tools! ⚡";
+    bubble.classList.add('visible');
+    setTimeout(() => bubble.classList.remove('visible'), 3000);
   });
 
-  // Initial greeting popup on load
   setTimeout(() => {
-    bubble.classList.add('show');
-    setTimeout(() => { bubble.classList.remove('show'); }, 4000);
-  }, 1000);
+    bubble.classList.add('visible');
+    setTimeout(() => bubble.classList.remove('visible'), 4000);
+  }, 1200);
 </script>
 </body>
 </html>
