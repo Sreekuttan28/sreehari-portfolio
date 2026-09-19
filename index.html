@@ -181,7 +181,6 @@
     background: radial-gradient(ellipse at center, rgba(56, 189, 248, 0.25) 0%, rgba(0,0,0,0) 70%);
   }
 
-  /* Banner title overlay with spacing for "sree hari" */
   .banner-title-overlay {
     position: absolute;
     bottom: 16px;
@@ -369,7 +368,7 @@
 <header>
   <div class="header-top mono">
     <span id="liveClock">LOADING... // BENGALURU, IN</span>
-    <span>SREEHARI.NET // V6.3</span>
+    <span>SREEHARI.NET // V6.4</span>
   </div>
   <div class="header-main">
     <a href="#" class="brand mono" onclick="switchPage('home')">Sreehari.net</a>
@@ -385,8 +384,7 @@
 <div class="banner-container">
   <div class="banner-glow"></div>
   <div class="banner-frame">
-    <!-- Updated with small space to "sree hari" -->
-    <div class="banner-title-overlay"><br>Sreehari</div>
+    <div class="banner-title-overlay"><br>Sree hari</div>
     <canvas id="bannerArtCanvas" width="1000" height="220" style="width: 100%; height: 100%; display: block;"></canvas>
   </div>
 </div>
@@ -505,7 +503,7 @@
           <div style="margin-top: 20px; border-top: 1px dashed var(--border); padding-top: 20px;">
             <p class="mono" style="font-size: 0.8rem; text-transform: uppercase; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 4px;">Narrator :</p>
             <div>
-              <span class="signature-name">sree hari</span>
+              <span class="signature-name">Sree hari</span>
               <span style="font-family: 'Caveat', cursive; font-size: 2.4rem; color: var(--accent); margin-left: 6px;">..</span>
             </div>
           </div>
@@ -719,12 +717,12 @@
       bCtx.beginPath(); bCtx.arc(613, 138, 14, 0, Math.PI * 2); bCtx.fill();
     }
 
-    // Top-Right Interesting Callout Text
+    // Top-Right Quote replacement
     bCtx.save();
     bCtx.font = '12px "DM Mono", monospace';
     bCtx.fillStyle = isDark ? '#38bdf8' : '#b45309';
     bCtx.textAlign = 'right';
-    bCtx.fillText('// 12.9716° N, 77.5946° E (BLR ROOFTOP LAB)', 975, 28);
+    bCtx.fillText('"Grow through what you go through." — Unknown', 975, 28);
     bCtx.restore();
   }
 
