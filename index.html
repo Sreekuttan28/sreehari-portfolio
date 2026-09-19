@@ -363,7 +363,7 @@
 <header>
   <div class="header-top mono">
     <span id="liveClock">LOADING... // BENGALURU, IN</span>
-    <span>SREEHARI.NET // V5.8</span>
+    <span>SREEHARI.NET // V5.9</span>
   </div>
   <div class="header-main">
     <a href="#" class="brand mono" onclick="switchPage('home')">Sreehari.net</a>
@@ -476,7 +476,7 @@
     </div>
   </div>
 
-  <!-- ABOUT PAGE (Updated with engaging narrative & signature) -->
+  <!-- ABOUT PAGE -->
   <div id="page-about" class="page-view">
     <div class="content-grid">
       <div>
@@ -492,7 +492,6 @@
             This digital space is my workshop and garden combined—built with clean lines, warm tones, and a whole lot of heart.
           </p>
 
-          <!-- Narator & Signature Section -->
           <div style="margin-top: 20px; border-top: 1px dashed var(--border); padding-top: 20px;">
             <p class="mono" style="font-size: 0.8rem; text-transform: uppercase; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 4px;">Narrator :</p>
             <div>
@@ -608,6 +607,13 @@
       bCtx.fillStyle = nightGrad;
       bCtx.fillRect(0, 0, 1000, 220);
 
+      // Cloud shadows floating across the sky
+      bCtx.fillStyle = 'rgba(255, 255, 255, 0.03)';
+      bCtx.beginPath();
+      bCtx.ellipse(250, 60, 90, 25, 0, 0, Math.PI * 2);
+      bCtx.ellipse(750, 45, 120, 30, 0, 0, Math.PI * 2);
+      bCtx.fill();
+
       bCtx.fillStyle = '#0f172a';
       bCtx.fillRect(0, 160, 1000, 60);
       bCtx.fillStyle = '#38bdf8';
@@ -616,18 +622,40 @@
       bCtx.fillStyle = '#1e293b';
       bCtx.fillRect(430, 130, 140, 8);
 
+      // 3 Monitors
       bCtx.fillStyle = '#0f172a'; bCtx.fillRect(435, 95, 36, 32);
       bCtx.fillStyle = '#38bdf8'; bCtx.fillRect(437, 97, 32, 26);
-
       bCtx.fillStyle = '#0f172a'; bCtx.fillRect(475, 85, 50, 42);
       bCtx.fillStyle = '#38bdf8'; bCtx.fillRect(477, 87, 46, 36);
-
       bCtx.fillStyle = '#0f172a'; bCtx.fillRect(529, 95, 36, 32);
       bCtx.fillStyle = '#34d399'; bCtx.fillRect(531, 97, 32, 26);
 
+      // Person vibing
       bCtx.fillStyle = '#38bdf8'; bCtx.fillRect(485, 120, 30, 25);
       bCtx.fillStyle = '#1e293b'; bCtx.fillRect(483, 130, 34, 25);
       bCtx.fillStyle = '#f8fafc'; bCtx.beginPath(); bCtx.arc(500, 118, 11, 0, Math.PI * 2); bCtx.fill();
+
+      // Dog and Cat sitting together on one side (Left)
+      // Dog (Golden/Brown blocky)
+      bCtx.fillStyle = '#d97706';
+      bCtx.fillRect(360, 140, 16, 18); // body
+      bCtx.fillRect(355, 132, 10, 12); // head
+      bCtx.fillRect(352, 130, 4, 6);   // ear
+      bCtx.fillRect(372, 148, 4, 10);  // leg
+      // Cat (Orange/Tabby blocky) sitting right next to dog
+      bCtx.fillStyle = '#f97316';
+      bCtx.fillRect(385, 143, 12, 15); // body
+      bCtx.fillRect(382, 136, 8, 10);  // head
+      bCtx.fillRect(380, 133, 3, 4);   // left ear
+      bCtx.fillRect(388, 133, 3, 4);   // right ear
+
+      // Small indoor potted plant on the other side (Right)
+      bCtx.fillStyle = '#cbd5e1'; // pot
+      bCtx.fillRect(605, 142, 16, 16);
+      bCtx.fillStyle = '#10b981'; // plant leaves
+      bCtx.beginPath();
+      bCtx.arc(613, 138, 14, 0, Math.PI * 2);
+      bCtx.fill();
 
     } else {
       const skyGrad = bCtx.createLinearGradient(0, 0, 0, 160);
@@ -637,6 +665,13 @@
       bCtx.fillStyle = skyGrad;
       bCtx.fillRect(0, 0, 1000, 220);
 
+      // Soft Cloud shadows floating across the light sky
+      bCtx.fillStyle = 'rgba(255, 255, 255, 0.45)';
+      bCtx.beginPath();
+      bCtx.ellipse(280, 50, 100, 25, 0, 0, Math.PI * 2);
+      bCtx.ellipse(720, 65, 130, 30, 0, 0, Math.PI * 2);
+      bCtx.fill();
+
       bCtx.fillStyle = '#cbd5e1';
       bCtx.fillRect(0, 160, 1000, 60);
       bCtx.fillStyle = '#94a3b8';
@@ -645,18 +680,39 @@
       bCtx.fillStyle = '#78350f';
       bCtx.fillRect(430, 130, 140, 8);
 
+      // 3 Monitors Setup
       bCtx.fillStyle = '#1e293b'; bCtx.fillRect(435, 95, 36, 32);
       bCtx.fillStyle = '#38bdf8'; bCtx.fillRect(437, 97, 32, 26);
-
       bCtx.fillStyle = '#1e293b'; bCtx.fillRect(475, 85, 50, 42);
       bCtx.fillStyle = '#f43f5e'; bCtx.fillRect(477, 87, 46, 36);
-
       bCtx.fillStyle = '#1e293b'; bCtx.fillRect(529, 95, 36, 32);
       bCtx.fillStyle = '#34d399'; bCtx.fillRect(531, 97, 32, 26);
 
+      // Person sitting & vibing
       bCtx.fillStyle = '#334155'; bCtx.fillRect(485, 120, 30, 25);
       bCtx.fillStyle = '#0284c7'; bCtx.fillRect(483, 130, 34, 25);
       bCtx.fillStyle = '#1c1917'; bCtx.beginPath(); bCtx.arc(500, 118, 11, 0, Math.PI * 2); bCtx.fill();
+
+      // Dog and Cat sitting together on one side (Left)
+      bCtx.fillStyle = '#b45309';
+      bCtx.fillRect(360, 140, 16, 18);
+      bCtx.fillRect(355, 132, 10, 12);
+      bCtx.fillRect(352, 130, 4, 6);
+      bCtx.fillRect(372, 148, 4, 10);
+
+      bCtx.fillStyle = '#ea580c';
+      bCtx.fillRect(385, 143, 12, 15);
+      bCtx.fillRect(382, 136, 8, 10);
+      bCtx.fillRect(380, 133, 3, 4);
+      bCtx.fillRect(388, 133, 3, 4);
+
+      // Small indoor potted plant on the other side (Right)
+      bCtx.fillStyle = '#94a3b8'; // pot
+      bCtx.fillRect(605, 142, 16, 16);
+      bCtx.fillStyle = '#059669'; // plant leaves
+      bCtx.beginPath();
+      bCtx.arc(613, 138, 14, 0, Math.PI * 2);
+      bCtx.fill();
     }
   }
 
@@ -778,7 +834,8 @@
   }
   drawMinecraftLuffy();
 
-  luffyContainer.addEventListener('click', (e) => {
+  luffyCompanyContainer = document.getElementById('luffyContainer');
+  luffyCompanyContainer.addEventListener('click', (e) => {
     e.stopPropagation();
     clickCount++;
     resetInactivity();
