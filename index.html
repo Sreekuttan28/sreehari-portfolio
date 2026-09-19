@@ -129,10 +129,33 @@
   }
   .theme-btn:hover { border-color: var(--accent); }
 
+  /* Watercolor Banner Container */
+  .watercolor-banner {
+    max-width: 1000px;
+    margin: 30px auto 0 auto;
+    padding: 0 20px;
+  }
+
+  .watercolor-frame {
+    width: 100%;
+    height: 220px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #eef2f6;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    position: relative;
+    transition: opacity 0.4s ease;
+  }
+
+  [data-theme="dark"] .watercolor-frame {
+    opacity: 0.35; /* subtle in dark mode so it doesn't clash with starfield */
+  }
+
   main {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 40px 20px 60px 20px;
+    padding: 30px 20px 60px 20px;
   }
 
   .page-view {
@@ -157,6 +180,7 @@
     .content-grid { display: flex; flex-direction: column; }
     .header-main { flex-direction: column; align-items: flex-start; }
     .nav-menu { width: 100%; justify-content: space-between; }
+    .watercolor-frame { height: 160px; }
   }
 
   .card {
@@ -298,7 +322,7 @@
 <header>
   <div class="header-top mono">
     <span id="liveClock">LOADING... // BENGALURU, IN</span>
-    <span>SREEHARI.NET // V5.4</span>
+    <span>SREEHARI.NET // V5.5</span>
   </div>
   <div class="header-main">
     <a href="#" class="brand mono" onclick="switchPage('home')">Sreehari.net</a>
@@ -310,6 +334,13 @@
     </nav>
   </div>
 </header>
+
+<!-- Watercolor Banner: Top Building Rooftop with 3 Monitors & Happy Vibe -->
+<div class="watercolor-banner">
+  <div class="watercolor-frame">
+    <canvas id="waterPaintingCanvas" width="1000" height="220" style="width: 100%; height: 100%; display: block;"></canvas>
+  </div>
+</div>
 
 <main>
   <!-- HOME PAGE -->
@@ -511,6 +542,94 @@
   resizeCanvas();
   drawStars();
 
+  // Watercolor Rooftop Banner Painting Animation (3 Monitors, Happy Vibing Person)
+  const wpCanvas = document.getElementById('waterPaintingCanvas');
+  const wpCtx = wpCanvas.getContext('2d');
+
+  function drawWatercolorScene() {
+    wpCtx.clearRect(0, 0, 1000, 220);
+
+    // Soft sky watercolor gradient
+    const skyGrad = wpCtx.createLinearGradient(0, 0, 0, 160);
+    skyGrad.addColorStop(0, '#fef3c7'); // soft warm morning/sunset yellow
+    skyGrad.addColorStop(0.5, '#fed7aa'); 
+    skyGrad.addColorStop(1, '#bae6fd'); // watercolor soft blue sky
+    wpCtx.fillStyle = skyGrad;
+    wpCtx.fillRect(0, 0, 1000, 160);
+
+    // Distant watercolor soft mountains/clouds
+    wpCtx.fillStyle = 'rgba(216, 180, 254, 0.35)';
+    wpCtx.beginPath();
+    wpCtx.moveTo(0, 130);
+    wpCtx.bezierCurveTo(200, 90, 400, 140, 700, 100);
+    wpCtx.bezierCurveTo(850, 80, 950, 110, 1000, 100);
+    wpCtx.lineTo(1000, 160);
+    wpCtx.lineTo(0, 160);
+    wpCtx.fill();
+
+    // Rooftop background floor
+    wpCtx.fillStyle = '#cbd5e1';
+    wpCtx.fillRect(0, 160, 1000, 60);
+    wpCtx.fillStyle = '#94a3b8';
+    wpCtx.fillRect(0, 155, 1000, 5); // rooftop ledge
+
+    // Windows & distant city silhouette
+    wpCtx.fillStyle = 'rgba(148, 163, 184, 0.4)';
+    wpCtx.fillRect(100, 100, 50, 60);
+    wpCtx.fillRect(170, 80, 40, 80);
+    wpCtx.fillRect(800, 90, 60, 70);
+
+    // Desk on the rooftop
+    wpCtx.fillStyle = '#78350f'; // wooden desk top
+    wpCtx.fillRect(430, 130, 140, 8);
+    wpCtx.fillStyle = '#451a03'; // desk legs
+    wpCtx.fillRect(445, 138, 8, 22);
+    wpCtx.fillRect(535, 138, 8, 22);
+
+    // 3 Monitors Setup on Desk
+    // Left monitor
+    wpCtx.fillStyle = '#1e293b';
+    wpCtx.fillRect(435, 95, 36, 32);
+    wpCtx.fillStyle = '#38bdf8'; // screen glow
+    wpCtx.fillRect(437, 97, 32, 26);
+    // Center monitor (main)
+    wpCtx.fillStyle = '#1e293b';
+    wpCtx.fillRect(475, 85, 50, 42);
+    wpCtx.fillStyle = '#f43f5e'; // code/vibe screen glow
+    wpCtx.fillRect(477, 87, 46, 36);
+    // Right monitor
+    wpCtx.fillStyle = '#1e293b';
+    wpCtx.fillRect(529, 95, 36, 32);
+    wpCtx.fillStyle = '#34d399'; // graphs screen glow
+    wpCtx.fillRect(531, 97, 32, 26);
+
+    // Happy Vibing Person sitting at desk
+    // Chair back
+    wpCtx.fillStyle = '#334155';
+    wpCtx.fillRect(485, 120, 30, 25);
+    // Body / hoodie
+    wpCtx.fillStyle = '#0284c7';
+    wpCtx.fillRect(483, 130, 34, 25);
+    // Head & Hair
+    wpCtx.fillStyle = '#1c1917';
+    wpCtx.beginPath();
+    wpCtx.arc(500, 118, 11, 0, Math.PI * 2);
+    wpCtx.fill();
+    // Happy vibing pose: raised arms/hands near keyboard
+    wpCtx.fillStyle = '#fde047';
+    wpCtx.fillRect(475, 138, 8, 6);
+    wpCtx.fillRect(517, 138, 8, 6);
+
+    // Soft watercolor aesthetic vignette / border overlay
+    const vignette = wpCtx.createRadialGradient(500, 110, 200, 500, 110, 550);
+    vignette.addColorStop(0, 'rgba(255,255,255,0)');
+    vignette.addColorStop(1, 'rgba(249, 246, 238, 0.4)');
+    wpCtx.fillStyle = vignette;
+    wpCtx.fillRect(0, 0, 1000, 220);
+  }
+
+  drawWatercolorScene();
+
   // Minecraft-Style Blocky Luffy with Working Touch/Click Reactions & Inactivity Runner
   const lCanvas = document.getElementById('luffyCanvas');
   const lCtx = lCanvas.getContext('2d');
@@ -654,7 +773,7 @@
       showSpeech("Hey! Stop poking me so much! 😄");
     } else {
       showSpeech("Grrrr! That's enough poking! I'm getting angry! 🔥");
-      if (clickCount > 6) clickCount = 4; // Keep angry state
+      if (clickCount > 6) clickCount = 4;
     }
   });
 
