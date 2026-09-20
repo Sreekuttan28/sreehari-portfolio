@@ -116,12 +116,12 @@
   .nav-menu {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
     flex-wrap: wrap;
   }
 
   .nav-menu a {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -136,10 +136,10 @@
     background: var(--card-bg);
     border: 1px solid var(--border);
     color: var(--text);
-    padding: 6px 14px;
+    padding: 6px 12px;
     border-radius: 20px;
     cursor: pointer;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 600;
     transition: all 0.2s;
   }
@@ -233,8 +233,8 @@
 
   @media(max-width: 850px) {
     .content-grid { display: flex; flex-direction: column; }
-    .header-main { flex-direction: column; align-items: flex-start; }
-    .nav-menu { width: 100%; justify-content: space-between; }
+    .header-main { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .nav-menu { width: 100%; justify-content: flex-start; gap: 14px; }
     .banner-frame { height: 160px; }
   }
 
@@ -376,7 +376,7 @@
 <header>
   <div class="header-top mono">
     <span id="liveClock">LOADING... // BENGALURU, IN</span>
-    <span>SREEHARI.NET // V7.2</span>
+    <span>SREEHARI.NET // V7.3</span>
   </div>
   <div class="header-main">
     <a href="#" class="brand mono" onclick="switchPage('home')">Sreehari.net</a>
@@ -393,7 +393,6 @@
 <div class="banner-container">
   <div class="banner-glow"></div>
   <div class="banner-frame">
-    <!-- Capitalized S in Sree hari -->
     <div class="banner-title-overlay">Sree hari</div>
     <canvas id="bannerArtCanvas" width="1000" height="220" style="width: 100%; height: 100%; display: block;"></canvas>
   </div>
@@ -440,7 +439,7 @@
           </div>
         </div>
 
-        <!-- NEW: Recent Thoughts Card on Home Page -->
+        <!-- Recent Thoughts Card on Home Page -->
         <div class="card" style="margin-bottom: 0;">
           <div class="section-title mono" style="margin-bottom: 8px;">Latest Journal</div>
           <h4 style="font-size: 1.05rem; margin-bottom: 6px;" class="mono">The Cost of Empathy</h4>
@@ -546,9 +545,9 @@
 
         <!-- Thought Post 1 -->
         <div id="thought-1" class="card" style="margin-bottom: 30px;">
-          <div class="mono" style="font-size: 0.75rem; color: var(--accent); margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center;">
+          <div class="mono" style="font-size: 0.75rem; color: var(--accent); margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
             <span>SEPTEMBER 20, 2026 // 11:30 PM</span>
-            <span style="background: var(--bg); padding: 2px 8px; border-radius: 4px; border: 1px solid var(--border);">⏱️ 2 min read</span>
+            <span style="background: var(--bg); padding: 3px 10px; border-radius: 6px; border: 1px solid var(--border);">⏱️ 2 min read</span>
           </div>
           <h3 style="font-size: 1.5rem; margin-bottom: 16px;" class="mono">The Cost of Empathy</h3>
           
